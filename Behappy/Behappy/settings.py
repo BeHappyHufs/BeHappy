@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'FindLocation',
     'Board',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

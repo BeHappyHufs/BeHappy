@@ -29,13 +29,12 @@ def showBin():
     #res = requests.get(get)
     xml = res.text
     soup = BeautifulSoup(xml,'html.parser')
-    # for tag in soup.find_all('수거쓰레기종류'):
-    #     data.append(tag.text)
-    # for tag in soup.find_all('소재지도로명주소'):
-    # #     where.append(tag.text)
-    # for tag in soup.find_all():
-    #     data.append(tag.text)
-    data.append("kim")
-    where.append(soup.text)
-    res= dict(zip(data,where))
-    return res
+    for tag in soup.find_all('col', attrs={'name':'위도'}):
+        data.append(tag.next)
+    for tag in soup.find_all('col', attrs={'name':'경도'}):
+        where.append(tag.next)
+    result =[]
+    result.append(data)
+    result.append(where)
+    #print(res)
+    return result

@@ -9,4 +9,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('map/', views.showMap),
     path('show/',views.index),
+    path('bin/',views.whereBin),
 ]

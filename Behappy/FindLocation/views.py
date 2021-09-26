@@ -14,7 +14,10 @@ import xml.etree.ElementTree as elemTree
 def showMap(request):
     if request.method =='GET':
         return render(request,'findlocation/map.html')
-
+@csrf_exempt
+def whereBin(request):
+    if request.method =='GET':
+        return render(request,'findlocation/bin.html')
 
 
 

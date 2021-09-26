@@ -16,16 +16,17 @@ def showMap(request):
         return render(request,'findlocation/map.html')
 @csrf_exempt
 def whereBin(request):
-    if request.method =='GET':
-        return render(request,'findlocation/bin.html')
-
+    res = showBin()
+    context = json.dumps(res)
+    print(context)
+    return render(request, 'findlocation/bin.html', {"where": context})
 
 
 def index(request):
     res = showBin()
-    print(res)
     context = {'data' : '일반쓰레기','where' : res}
-    print(context)
+    kim = json.dumps(res)
+    print(kim)
     return render(request, 'findlocation/show.html', context)
     #return HTTPResponse(res)
     # bin = res.get('일반 사각 쓰레기통')

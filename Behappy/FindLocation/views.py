@@ -26,9 +26,10 @@ def index(request):
     res = showBin()
     context = {'data' : '일반쓰레기','where' : res}
     kim = json.dumps(res)
-    print(kim)
     return render(request, 'findlocation/show.html', context)
-    #return HTTPResponse(res)
-    # bin = res.get('일반 사각 쓰레기통')
-    # context = {'data': '서울특별시 구로구 구로동로 31', 'bin_kind' : bin}
-    # return render(request,'findlocation/show.html',context)
+
+def showDiffer(request):
+    res = showBin()
+    context = {'data' : '가로휴지통', 'where' : res}
+    print(context)
+    return render(request,'findlocation/seperate.html', context)

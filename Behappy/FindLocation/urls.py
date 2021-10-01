@@ -10,4 +10,5 @@ urlpatterns = [
     path('map/', views.showMap),
     path('show/',views.index),
     path('bin/',views.whereBin),
+    path('seperate/',views.showDiffer),
 ]

@@ -14,6 +14,7 @@ service = unquote(serviceKey, 'UTF-8')
 def showBin():
     data = []
     where =[]
+    kind = []
 
     url = "https://api.odcloud.kr/api/15087773/v1/uddi:6bcb9ebf-d368-4ac8-9382-a9e82437f74d"
     returnType = "XML"
@@ -33,8 +34,11 @@ def showBin():
         data.append(tag.next)
     for tag in soup.find_all('col', attrs={'name':'경도'}):
         where.append(tag.next)
+    for tag in soup.find_all('col', attrs={'name':'수거쓰레기종류'}):
+        kind.append(tag.next)
     result =[]
     result.append(data)
     result.append(where)
+    result.append(kind)
     #print(res)
     return result

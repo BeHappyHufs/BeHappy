@@ -48,7 +48,7 @@ var coffeePositions = [];
 var storePositions = [];
 
 
-for (var i = 0; i < a[0].length; i ++) {
+for (var i = 0; i < a[0].length+1; i ++) {
     var one = a[0][i];
     var two = a[1][i];
     var kind = a[2][i];
@@ -56,35 +56,15 @@ for (var i = 0; i < a[0].length; i ++) {
     // var coffeePositions = []
     // var storePositions = []
 
-    if (kind === "일반쓰레기"){
-        coffeePositions.push(new kakao.maps.Lating(+one, +two));
+    //coffeePositions.push(new kakao.maps.Lating(+one,+two));
+    
+    if (kind == "일반쓰레기"){
+        coffeePositions.push(new kakao.maps.LatLng(+one, +two));
     }else{
         storePositions.push(new kakao.maps.LatLng(+one, +two));
     }
 }
 
-// 커피숍 마커가 표시될 좌표 배열입니다
-// var coffeePositions = [ 
-
-//     new kakao.maps.LatLng(37.499590490909185, 127.0263723554437),
-//     new kakao.maps.LatLng(37.499427948430814, 127.02794423197847),
-//     new kakao.maps.LatLng(37.498553760499505, 127.02882598822454),
-//     new kakao.maps.LatLng(37.497625593121384, 127.02935713582038),
-//     new kakao.maps.LatLng(37.49646391248451, 127.02675574250912),
-//     new kakao.maps.LatLng(37.49629291770947, 127.02587362608637),
-//     new kakao.maps.LatLng(37.49754540521486, 127.02546694890695)                
-// ];
-
-// 편의점 마커가 표시될 좌표 배열입니다
-// var storePositions = [
-//     new kakao.maps.LatLng(37.497535461505684, 127.02948149502778),
-//     new kakao.maps.LatLng(37.49671536281186, 127.03020491448352),
-//     new kakao.maps.LatLng(37.496201943633714, 127.02959405469642),
-//     new kakao.maps.LatLng(37.49640072567703, 127.02726459882308),
-//     new kakao.maps.LatLng(37.49640098874988, 127.02609983175294),
-//     new kakao.maps.LatLng(37.49932849491523, 127.02935780247945),
-//     new kakao.maps.LatLng(37.49996818951873, 127.02943721562295)
-// ];
     
 
 var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다

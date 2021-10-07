@@ -44,6 +44,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 var a = {{ where|safe }}; // views.py에서 넘겨져 오는 데이터들
+
 var coffeePositions = [];
 var storePositions = [];
 
@@ -180,7 +181,7 @@ function createStoreMarkers() {
             };       
      
         // 마커이미지와 마커를 생성합니다
-        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),   
             marker = createMarker(storePositions[i], markerImage);  
 
         // 생성된 마커를 편의점 마커 배열에 추가합니다

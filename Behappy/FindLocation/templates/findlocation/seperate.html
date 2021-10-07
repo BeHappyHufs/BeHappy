@@ -37,7 +37,7 @@
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
-        center: new kakao.maps.LatLng(37.498004414546934, 127.02770621963765), // 지도의 중심좌표 
+        center: new kakao.maps.LatLng(37.48070089809124, 126.88282778351619), // 화면에 띄워질 지도의 중심좌표 
         level: 3 // 지도의 확대 레벨 
     }; 
 
@@ -48,7 +48,7 @@ var coffeePositions = [];
 var storePositions = [];
 
 
-for (var i = 0; i < a[0].length; i ++) {
+for (var i = 0; i < a[0].length+1; i ++) {
     var one = a[0][i];
     var two = a[1][i];
     var kind = a[2][i];
@@ -56,35 +56,15 @@ for (var i = 0; i < a[0].length; i ++) {
     // var coffeePositions = []
     // var storePositions = []
 
-    if (kind === "일반쓰레기"){
-        coffeePositions.push(new kakao.maps.Lating(+one, +two));
+    //coffeePositions.push(new kakao.maps.Lating(+one,+two));
+    
+    if (kind == "일반쓰레기"){
+        coffeePositions.push(new kakao.maps.LatLng(+one, +two));
     }else{
         storePositions.push(new kakao.maps.LatLng(+one, +two));
     }
 }
 
-// 커피숍 마커가 표시될 좌표 배열입니다
-// var coffeePositions = [ 
-
-//     new kakao.maps.LatLng(37.499590490909185, 127.0263723554437),
-//     new kakao.maps.LatLng(37.499427948430814, 127.02794423197847),
-//     new kakao.maps.LatLng(37.498553760499505, 127.02882598822454),
-//     new kakao.maps.LatLng(37.497625593121384, 127.02935713582038),
-//     new kakao.maps.LatLng(37.49646391248451, 127.02675574250912),
-//     new kakao.maps.LatLng(37.49629291770947, 127.02587362608637),
-//     new kakao.maps.LatLng(37.49754540521486, 127.02546694890695)                
-// ];
-
-// 편의점 마커가 표시될 좌표 배열입니다
-// var storePositions = [
-//     new kakao.maps.LatLng(37.497535461505684, 127.02948149502778),
-//     new kakao.maps.LatLng(37.49671536281186, 127.03020491448352),
-//     new kakao.maps.LatLng(37.496201943633714, 127.02959405469642),
-//     new kakao.maps.LatLng(37.49640072567703, 127.02726459882308),
-//     new kakao.maps.LatLng(37.49640098874988, 127.02609983175294),
-//     new kakao.maps.LatLng(37.49932849491523, 127.02935780247945),
-//     new kakao.maps.LatLng(37.49996818951873, 127.02943721562295)
-// ];
     
 
 var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
@@ -96,6 +76,57 @@ createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배�
 createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
 
 changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
+
+// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+if (navigator.geolocation) {
+    
+    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+    navigator.geolocation.getCurrentPosition(function(position) {
+        
+        var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+        
+        var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+            message = '<div style="padding:5px;">현재 나의 위치</div>'; // 인포윈도우에 표시될 내용입니다
+        
+        // 마커와 인포윈도우를 표시합니다
+        displayMarker(locPosition, message);
+
+            
+      });
+    
+} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+    
+    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+        message = 'geolocation을 사용할수 없어요..'
+        
+    displayMarker(locPosition, message);
+}
+
+// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+function displayMarker(locPosition, message) {
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({  
+        map: map, 
+        position: locPosition
+    }); 
+    
+    var iwContent = message, // 인포윈도우에 표시할 내용
+        iwRemoveable = true;
+
+    // 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        content : iwContent,
+        removable : iwRemoveable
+    });
+    
+    // 인포윈도우를 마커위에 표시합니다 
+    infowindow.open(map, marker);
+    
+    // 지도 중심좌표를 접속위치로 변경합니다
+    map.setCenter(locPosition);      
+}
 
 
 // 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다

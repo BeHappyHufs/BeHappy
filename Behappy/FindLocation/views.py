@@ -25,15 +25,12 @@ def whereBin(request):
 def index(request):
     res = showBin()
     context = json.dumps(res,ensure_ascii=False)
-    # context = {'data' : '일반쓰레기','where' : res}
-    #kim = json.dumps(res)
     return render(request, 'findlocation/show.html', {"where" : context})
 
 @csrf_exempt
 def showDiffer(request):
     res = showBin()
-    # with open('res.json','w+',encoding='UTF8') as f:
-    #     context = json.dump(res,f,ensure_ascii=False)
     context = json.dumps(res, ensure_ascii=False)
-    print(context)
     return render(request,'findlocation/seperate.html', {"where": context})
+
+

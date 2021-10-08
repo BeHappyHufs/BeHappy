@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 - 목록</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+<header>
+    <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
+        <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <strong>게시판</strong>
+            </a>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">#</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">작성일</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for board in boards %}
+        <tr class="text-center">
+            <th scope="row">
+                <span>{{ board.id }}</span>
+            </th>
+            <td>
+                <a href="/post/{{ board.id }}">
+                    <span>{{ board.title }}</span>
+                </a>
+            </td>
+            <td>
+                <span>{{ board.author }}</span>
+            </td>
+            <td>
+                <span>{{ board.created_date | date:"Y-m-d h:i" }}</span>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+            <a class="btn btn-primary" href="/post" role="button">글쓰기</a>
+        </div>
+    </div>
+</div>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

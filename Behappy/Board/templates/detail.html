@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 - {{ board.title }}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+<header>
+    <div class="navbar navbar-dark bg-dark shadow-sm mb-3">
+        <div class="container d-flex justify-content-between">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <strong>게시판</strong>
+            </a>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ board.title }} - {{ board.author }}</h5>
+            <p class="card-text"><small class="text-muted">{{ board.created_date | date:"Y-m-d h:i" }}</small></p>
+            <p class="card-text">{{ board.content }}</p>
+        </div>
+    </div>
+    <div class="row mt-3">
+       <form action="{% url 'update' boardid=board.id %}" method="POST">{% csrf_token %}
+           <input type="text" class="title" name="title" value="{{board.title}}" readonly/>
+           <textarea class="content" name="content" readonly>{{board.content}}</textarea>
+
+           <input type="button" class="btnUpdate" value="수정하기">
+           <input class="btnSubmit" type="submit" value="수정완료" style="display: none"/>
+
+       </form>
+
+
+
+    </div>
+</div>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+<script>
+    document.querySelector('.btnUpdate').addEventListener('click', e => {
+        let title = document.querySelector('.title');
+        let content = document.querySelector('.content');
+        let btnSubmit = document.querySelector('.btnSubmit');
+        let btnUpdate = document.querySelector('.btnUpdate');
+
+        title.readOnly = false;
+        content.readOnly = false;
+        btnSubmit.style.display = 'inline-block';
+        btnUpdate.style.display = 'none';
+    });
+</script>
+</html>

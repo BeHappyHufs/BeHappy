@@ -8,5 +8,8 @@ urlpatterns = [
     path('post', views.post, name='post'),
     path('post/<int:id>', views.detail, name='detail'),
     path('update/<int:boardid>/',views.update, name='update'),
-    url('post/(?P<id>[0-9]+)$', views.detail, name='detail')
+    path('delete/<int:boardid>', views.delete, name='delete'),
+    url('post/(?P<id>[0-9]+)$', views.detail, name='detail'),
+    
+
 ] 

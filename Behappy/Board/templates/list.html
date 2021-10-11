@@ -20,7 +20,7 @@
     <table class="table">
         <thead class="thead-light">
         <tr class="text-center">
-            <th scope="col">#</th>
+            
             <th scope="col">제목</th>
             <th scope="col">작성자</th>
             <th scope="col">작성일</th>
@@ -29,9 +29,6 @@
         <tbody>
         {% for board in boards %}
         <tr class="text-center">
-            <th scope="row">
-                <span>{{ board.id }}</span>
-            </th>
             <td>
                 <a href="/post/{{ board.id }}">
                     <span>{{ board.title }}</span>

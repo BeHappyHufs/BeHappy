@@ -43,3 +43,10 @@ def update(request,boardid):
         else:
             #return redirect('detail', boardid=boardid)
             return render(request, 'detail.html', {'board': board})
+
+
+def delete(request, boardid):
+    board = Board.objects.get(id=boardid)
+    board.delete()
+    boards = {'boards': Board.objects.all()}
+    return render(request, 'list.html', boards)

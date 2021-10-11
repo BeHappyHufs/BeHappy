@@ -16,6 +16,7 @@
         </div>
     </div>
 </header>
+<!--제목을 클릭했을때 정보를 보여줌 -->
 <div class="container">
     <div class="card">
         <div class="card-body">
@@ -24,6 +25,7 @@
             <p class="card-text">{{ board.content }}</p>
         </div>
     </div>
+    <!--수정하기 버튼 기능 -->
     <div class="row mt-3">
        <form action="{% url 'update' boardid=board.id %}" method="POST">{% csrf_token %}
            <input type="text" class="title" name="title" value="{{board.title}}" readonly/>
@@ -31,12 +33,11 @@
 
            <input type="button" class="btnUpdate" value="수정하기">
            <input class="btnSubmit" type="submit" value="수정완료" style="display: none"/>
-
+               
        </form>
-
-
-
-    </div>
+       <!--삭제하기 버튼 기능 -->
+       <td><button class="btn btn-danger rounded-pill" onclick="location.href='/delete/{{board.id}}'">삭제</button></td>
+    </div> 
 </div>
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
@@ -51,6 +52,8 @@
         content.readOnly = false;
         btnSubmit.style.display = 'inline-block';
         btnUpdate.style.display = 'none';
-    });
+    })
+   
+    
 </script>
 </html>

@@ -43,10 +43,96 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-var a = {{ where|safe }}; // views.py에서 넘겨져 오는 데이터들
+// var a = {{ where|safe }}; // views.py에서 넘겨져 오는 데이터들
+// var coffeePositions = [];
+// var storePositions = [];
 
+
+// for (var i = 0; i < a[0].length+1; i ++) {
+//     var one = a[0][i];
+//     var two = a[1][i];
+//     var kind = a[2][i];
+
+//     // var coffeePositions = []
+//     // var storePositions = []
+
+//     //coffeePositions.push(new kakao.maps.Lating(+one,+two));
+    
+//     if (kind == "일반쓰레기"){
+//         coffeePositions.push(new kakao.maps.LatLng(+one, +two));
+//     }else{
+//         storePositions.push(new kakao.maps.LatLng(+one, +two));
+//     }
+// }
+
+// function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) { 
+//     function deg2rad(deg) { 
+//         return deg * (Math.PI/180) 
+//     } 
+//     var R = 6371;
+//     var dLat = deg2rad(lat2-lat1);
+//     var dLon = deg2rad(lng2-lng1); 
+//     var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2); 
+//     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+//     var d = R * c; 
+//     return d; 
+// }
+
+
+
+
+
+
+
+// var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+//     coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
+//     storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
+
+    
+// createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
+// createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
+
+// changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
+
+var myOne = 0;
+var myTwo = 0;
+var myPostion;
+// HTML5의 geolocation으로 사용할 수 있는지 확인합니다
+if (navigator.geolocation) {
+    
+    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+    navigator.geolocation.getCurrentPosition(function(position) {
+        
+        var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+        myOne = lat;
+        myTwo = lon;
+
+        var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+            message = '<div style="padding:5px;">현재 나의 위치</div>'; // 인포윈도우에 표시될 내용입니다
+        
+        myPostion = locPosition;
+        // 마커와 인포윈도우를 표시합니다
+        displayMarker(locPosition, message);
+
+            
+      });
+    
+} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+    
+    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+        message = 'geolocation을 사용할수 없어요..'
+        
+    displayMarker(locPosition, message);
+}
+
+var a = {{ where|safe }}; // views.py에서 넘겨져 오는 데이터들
 var coffeePositions = [];
 var storePositions = [];
+
+
+
+
 
 
 for (var i = 0; i < a[0].length+1; i ++) {
@@ -54,13 +140,23 @@ for (var i = 0; i < a[0].length+1; i ++) {
     var two = a[1][i];
     var kind = a[2][i];
 
-
+    trashPostion = new kakao.maps.LatLng(+one, +two);
+    // var coffeePositions = []
+    // var storePositions = []
     
-    if (kind == "일반쓰레기"){
-        coffeePositions.push(new kakao.maps.LatLng(+one, +two));
-    }else{
-        storePositions.push(new kakao.maps.LatLng(+one, +two));
+    //coffeePositions.push(new kakao.maps.Lating(+one,+two));
+    if(computeDistance(myOne,myTwo,one,two) < 4){
+        if (kind == "일반쓰레기"){
+            coffeePositions.push(new kakao.maps.LatLng(+one, +two));
+        }else{
+            storePositions.push(new kakao.maps.LatLng(+one, +two));
+        }
     }
+    // if (kind == "일반쓰레기"){
+    //     coffeePositions.push(new kakao.maps.LatLng(+one, +two));
+    // }else{
+    //     storePositions.push(new kakao.maps.LatLng(+one, +two));
+    // }
 }
 
     
@@ -75,31 +171,7 @@ createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배�
 
 changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
 
-// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-if (navigator.geolocation) {
-    
-    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-    navigator.geolocation.getCurrentPosition(function(position) {
-        
-        var lat = position.coords.latitude, // 위도
-            lon = position.coords.longitude; // 경도
-        
-        var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-            message = '<div style="padding:5px;">현재 나의 위치</div>'; // 인포윈도우에 표시될 내용입니다
-        
-        // 마커와 인포윈도우를 표시합니다
-        displayMarker(locPosition, message);
 
-            
-      });
-    
-} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-    
-    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
-        message = 'geolocation을 사용할수 없어요..'
-        
-    displayMarker(locPosition, message);
-}
 
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
 function displayMarker(locPosition, message) {
@@ -181,7 +253,7 @@ function createStoreMarkers() {
             };       
      
         // 마커이미지와 마커를 생성합니다
-        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),   
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
             marker = createMarker(storePositions[i], markerImage);  
 
         // 생성된 마커를 편의점 마커 배열에 추가합니다
@@ -229,6 +301,45 @@ function changeMarker(type){
         setStoreMarkers(map);
     } 
 } 
+
+function computeDistance(start1,start2,end1,end2) {
+    var theta = start2-end2;
+    dist = Math.sin(deg2rad(start1)) * Math.sin(deg2rad(end1)) + Math.cos(deg2rad(start1)) * Math.cos(deg2rad(end1)) * Math.cos(deg2rad(theta));
+    dist = Math.acos(dist);
+    dist = rad2deg(dist);
+    dist = dist * 60 * 1.1515;
+    dist = dist*1609344;
+    console.log(dist);
+    return Number(dist*1000).toFixed(2);
+}
+
+function deg2rad(deg){
+    return(deg*Math.PI/180);
+
+}
+function rad2deg(rad){
+    return(rad*180/Math.PI);
+}
+
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    var R = 6371; // km
+    var dLat = (lat2-lat1).toRad();
+    var dLon = (lon2-lon1).toRad(); 
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * Math.sin(dLon/2) * Math.sin(dLon/2); 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var d = R * c;
+    return d;
+} 
+     
+ 
+function toRad(value){
+             
+    return value * Math.PI / 180;
+             
+}
+
+
 </script>
 </body>
 </html>

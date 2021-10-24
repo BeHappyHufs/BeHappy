@@ -33,4 +33,8 @@ def showDiffer(request):
     context = json.dumps(res, ensure_ascii=False)
     return render(request,'findlocation/seperate.html', {"where": context})
 
-
+@csrf_exempt
+def search(request):
+    res = showBin()
+    context = json.dumps(res, ensure_ascii=False)
+    return render(request,'findlocation/search.html', {"where": context})

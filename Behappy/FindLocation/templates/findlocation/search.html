@@ -72,11 +72,6 @@ for (var i = 0; i < a[0].length+1; i ++) {
     var two = a[1][i];
     var kind = a[2][i];
 
-    // var coffeePositions = []
-    // var storePositions = []
-
-    //coffeePositions.push(new kakao.maps.Lating(+one,+two));
-    
     if (kind == "일반쓰레기"){
         coffeePositions.push(new kakao.maps.LatLng(+one, +two));
     }else{
@@ -267,11 +262,18 @@ kakao.maps.event.addListener(map, 'mousemove', function (mouseEvent) {
     }     
 });     
 
+
+  
+
 // 지도에 마우스 오른쪽 클릭이벤트를 등록합니다
 // 원을 그리고있는 상태에서 마우스 오른쪽 클릭 이벤트가 발생하면
 // 마우스 오른쪽 클릭한 위치를 기준으로 원과 원의 반경정보를 표시하는 선과 커스텀 오버레이를 표시하고 그리기를 종료합니다
 kakao.maps.event.addListener(map, 'rightclick', function (mouseEvent) {
     
+    
+
+
+
 
     if (drawingFlag) {
 
@@ -312,6 +314,8 @@ kakao.maps.event.addListener(map, 'rightclick', function (mouseEvent) {
             zIndex: 1 
         });  
 
+
+
         // 원을 지도에 표시합니다
         circle.setMap(map); 
         
@@ -320,6 +324,44 @@ kakao.maps.event.addListener(map, 'rightclick', function (mouseEvent) {
         
         // 반경 정보 커스텀 오버레이를 지도에 표시합니다
         radiusOverlay.setMap(map);
+        
+
+
+
+  
+
+
+        
+
+
+        // for (var i = 0; i < a[0].length+1; i ++) {
+        //     var one = a[0][i];
+        //     var two = a[1][i];
+        //     var kind = a[2][i];
+
+        //     if (kind == "일반쓰레기"){
+        //         coffeePositions.push(new kakao.maps.LatLng(+one, +two));
+        //     }else{
+        //         storePositions.push(new kakao.maps.LatLng(+one, +two));
+        //     }
+        // }   
+
+    
+
+       
+
+
+
+
+
+        // // 원을 지도에 표시합니다
+        // circle.setMap(map); 
+        
+        // // 선을 지도에 표시합니다
+        // polyline.setMap(map);
+        
+        // // 반경 정보 커스텀 오버레이를 지도에 표시합니다
+        // radiusOverlay.setMap(map);
         
         // 배열에 담을 객체입니다. 원, 선, 커스텀오버레이 객체를 가지고 있습니다
         var radiusObj = {
@@ -395,6 +437,7 @@ function getTimeHTML(distance) {
 
     return content;
 }
+
 
 // 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
 function createMarkerImage(src, size, options) {

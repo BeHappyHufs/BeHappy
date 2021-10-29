@@ -237,15 +237,28 @@ function createMarkerImage(src, size, options) {
     return markerImage;            
 }
 
+
+
+
 // 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
-function createMarker(position, image) {
+function createMarker(position, image,map) {
     var marker = new kakao.maps.Marker({
         position: position,
         image: image,
         title : "길 찾기",
 
     });
+    var iwContent = '<div style="padding:5px;">길 함 찾아 줄까?</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+        iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
+// 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        content : iwContent,
+        removable : iwRemoveable
+    });
+
+
+    kakao.maps.event.addListener(marker,'click',makeClickListener(map,marker,infowindow));
 
 
     
@@ -265,7 +278,7 @@ function createCoffeeMarkers(coffeePositions,coffeeMarkers,markerImageSrc) {
         
         // 마커이미지와 마커를 생성합니다
         var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-            marker = createMarker(coffeePositions[i], markerImage);  
+            marker = createMarker(coffeePositions[i], markerImage,map);  
         
         // 생성된 마커를 커피숍 마커 배열에 추가합니다
         coffeeMarkers.push(marker);
@@ -299,7 +312,7 @@ function createStoreMarkers(storePositions, storeMarkers,markerImageSrc) {
      
         // 마커이미지와 마커를 생성합니다
         var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-            marker = createMarker(storePositions[i], markerImage);  
+            marker = createMarker(storePositions[i], markerImage,map);  
 
         
         // 생성된 마커를 편의점 마커 배열에 추가합니다
@@ -316,16 +329,13 @@ function setStoreMarkers(map) {
 
 
 
-var iwContent = '<div style="padding:5px;">Hello World!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-// 인포윈도우를 생성합니다
-var infowindow = new kakao.maps.InfoWindow({
-    content : iwContent,
-    removable : iwRemoveable
-});
 
 
+function makeClickListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    }
+};
 
 // 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
 function changeMarker(type){

@@ -224,6 +224,13 @@ function displayMarker(locPosition, message) {
 
 
 
+
+
+
+
+
+
+
 // 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
 function createMarkerImage(src, size, options) {
     var markerImage = new kakao.maps.MarkerImage(src, size, options);
@@ -234,8 +241,13 @@ function createMarkerImage(src, size, options) {
 function createMarker(position, image) {
     var marker = new kakao.maps.Marker({
         position: position,
-        image: image
+        image: image,
+        title : "길 찾기",
+
     });
+
+
+
     
     return marker;  
 }   
@@ -261,10 +273,18 @@ function createCoffeeMarkers(coffeePositions,coffeeMarkers,markerImageSrc) {
 }
 
 // 커피숍 마커들의 지도 표시 여부를 설정하는 함수입니다
-function setCoffeeMarkers(map) {        
+function setCoffeeMarkers(map) {  
+
+    
     for (var i = 0; i < coffeeMarkers.length; i++) {  
         coffeeMarkers[i].setMap(map);
-    }        
+    }
+    
+// 마커에 클릭이벤트를 등록합니다
+
+
+// 마커에 클릭이벤트를 등록합니다   
+    
 }
 
 // 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
@@ -295,6 +315,18 @@ function setStoreMarkers(map) {
 }
 
 
+
+var iwContent = '<div style="padding:5px;">Hello World!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+// 인포윈도우를 생성합니다
+var infowindow = new kakao.maps.InfoWindow({
+    content : iwContent,
+    removable : iwRemoveable
+});
+
+
+
 // 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
 function changeMarker(type){
     
@@ -315,6 +347,8 @@ function changeMarker(type){
         setCoffeeMarkers(map);
         setStoreMarkers(null);
         
+
+        
     } else if (type === 'store') { // 편의점 카테고리가 클릭됐을 때
     
         // 편의점 카테고리를 선택된 스타일로 변경하고
@@ -327,6 +361,25 @@ function changeMarker(type){
         setStoreMarkers(map);
     } 
 }
+
+kakao.maps.event.addListener(marker, 'click', makeClickListener(map, coffeeMarkers, infowindow));
+
+function makeClickListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+
+
+
+
+
+
+
+
+
+
 
 function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
     function deg2rad(deg) {

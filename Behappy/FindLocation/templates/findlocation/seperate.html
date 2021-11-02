@@ -248,7 +248,13 @@ function createMarker(position, image,map) {
         title : "길 찾기",
 
     });
-    var iwContent = iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+      
+    var yes = 126.9175228;
+    var one = position.getLat();
+    var two = position.getLng();
+    var check = "https://map.kakao.com/link/map/My Location,37.492385,126.9175228";
+    
+    var iwContent = iwContent = '<div style="padding:5px;">쓰레기통 <br><a href="https://map.kakao.com/link/map/My Location,'+one+','+two+'" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/쓰레기통,'+one+','+two+'" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
         iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
 // 인포윈도우를 생성합니다

@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
     #게시판
-    path('main/', views.main, name='main'),
+    path('', views.main, name='main'),
     path('write/', views.write, name='write'),
     path('detail/<int:boardid>/', views.detail, name='detail'),
     path('delete/<int:boardid>', views.delete, name='delete'),
@@ -16,5 +16,5 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('signUp/', views.signUp, name='signUp'),
     path('logout/', views.logout, name='logout'),
-   
+
 ] 

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
     'FindLocation',
     'Board',
     #'rest_framework',
@@ -91,7 +92,7 @@ DATABASES = {
     	'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'NoticeBoard', 
         'USER': 'root', 
-        'PASSWORD': 'qwe123!@#', 
+        'PASSWORD': 'guswnsroqkfdyd', 
         'HOST': 'localhost', 
         'PORT': '3306', 
      } 

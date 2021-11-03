@@ -9,6 +9,12 @@
         {% csrf_token %}
         {{ form.as_p }} 
         <input type="submit" value="signup">
+        <input type="button" value="돌아가기" onclick="back()">
     </form>
 </body>
+ <script>
+    const back = () =>{
+         window.history.back();
+    }
+ </script>
 </html>

@@ -9,14 +9,22 @@
         
         <input type="text" class="title" name="title" value="{{board.title}}" readonly/>
         <textarea class="content" name="content" readonly>{{board.content}}</textarea>
-        
+        {% if board.member.id == session %}
         <input type="button" class="btnUpdate" value="수정하기">
         <input class="btnSubmit" type="submit" value="수정완료" style="display:none"/>
-
+        {%endif%}
+        <input type="button" value="돌아가기" onclick="back()">
     </form>
+    {% if board.member.id == session %}
+    <!--삭제하기 버튼 기능 -->
+    <td><button class="btn btn-danger rounded-pill" onclick="location.href='/delete/{{board.id}}'">삭제</button></td>
+    {%endif%}
 </body>
 <script>
-    document.querySelector('.btnUpdate').addEventListener('click', e => {
+    let btnUpdate = document.querySelector('.btnUpdate');
+
+    if(btnUpdate != null){
+        document.querySelector('.btnUpdate').addEventListener('click', e => {
         let title = document.querySelector('.title');
         let content = document.querySelector('.content');
         let btnSubmit = document.querySelector('.btnSubmit');
@@ -26,6 +34,13 @@
         content.readOnly = false;
         btnSubmit.style.display = 'inline-block';
         btnUpdate.style.display = 'none';
-    });
+        });
+    }
+    
+
+    const back = () =>{
+         window.history.back();
+    }
+    
 </script>
 </html>

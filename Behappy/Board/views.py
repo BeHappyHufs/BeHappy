@@ -67,6 +67,14 @@ def update(request, boardid):
         else:
             return render(request, 'detail.html', {'board': board})
 
+
+def delete(request, boardid):
+    board = Board.objects.get(id=boardid)
+    board.delete()
+    boards = {'boards': Board.objects.all()}
+    return render(request, 'main.html', boards)
+
+
 #로그인
 def login(request):
     form = MemberForm()

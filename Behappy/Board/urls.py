@@ -8,6 +8,7 @@ urlpatterns = [
     path('main/', views.main, name='main'),
     path('write/', views.write, name='write'),
     path('detail/<int:boardid>/', views.detail, name='detail'),
+    path('delete/<int:boardid>', views.delete, name='delete'),
     path('update/<int:boardid>/', views.update, name='update'),
     url('post/(?P<id>[0-9]+)$', views.detail, name='detail'),
     #로그인

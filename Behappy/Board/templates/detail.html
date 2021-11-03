@@ -5,10 +5,27 @@
     <title>Title</title>
 </head>
 <body>
+    <form action="{% url 'update' boardid=board.id %}" method="POST">
+        
+        <input type="text" class="title" name="title" value="{{board.title}}" readonly/>
+        <textarea class="content" name="content" readonly>{{board.content}}</textarea>
+        
+        <input type="button" class="btnUpdate" value="수정하기">
+        <input class="btnSubmit" type="submit" value="수정완료" style="display:none"/>
 
-   <input type="text" class="title" name="title" value="{{board.title}}" readonly/>
-   <textarea class="content" name="content" readonly>{{board.content}}</textarea>
-
-
+    </form>
 </body>
+<script>
+    document.querySelector('.btnUpdate').addEventListener('click', e => {
+        let title = document.querySelector('.title');
+        let content = document.querySelector('.content');
+        let btnSubmit = document.querySelector('.btnSubmit');
+        let btnUpdate = document.querySelector('.btnUpdate');
+ 
+        title.readOnly = false;
+        content.readOnly = false;
+        btnSubmit.style.display = 'inline-block';
+        btnUpdate.style.display = 'none';
+    });
+</script>
 </html>

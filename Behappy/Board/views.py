@@ -6,6 +6,8 @@ from .models import *
 
 from .form import BoardWriteForm, MemberForm, signupForm
 from Board import form
+from django.views.decorators.csrf import csrf_exempt
+
 
 # Create your views here.
 def main(request):
@@ -51,7 +53,19 @@ def detail(request, boardid):
     except KeyError:
         return redirect('main')
 
-
+@csrf_exempt
+def update(request, boardid):
+    if request.method =='POST':
+        board = Board.objects.get(pk=boardid)
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        if title is not None and board is not None:
+            board.title = title
+            board.content = content
+            board.save()
+            return render(request, 'detail.html', {'board': board})
+        else:
+            return render(request, 'detail.html', {'board': board})
 
 #로그인
 def login(request):

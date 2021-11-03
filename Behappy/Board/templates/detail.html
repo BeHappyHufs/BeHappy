@@ -13,7 +13,8 @@
         <input type="button" class="btnUpdate" value="수정하기">
         <input class="btnSubmit" type="submit" value="수정완료" style="display:none"/>
         {%endif%}
-        <input type="button" value="돌아가기" onclick="back()">
+        <a href="{% url 'main' %}"><input type="button" value="돌아가기"></a>
+        
     </form>
     {% if board.member.id == session %}
     <!--삭제하기 버튼 기능 -->
@@ -38,9 +39,7 @@
     }
     
 
-    const back = () =>{
-         window.history.back();
-    }
+   
     
 </script>
 </html>

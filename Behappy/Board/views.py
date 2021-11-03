@@ -4,63 +4,52 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
 
-from .form import MemberForm, signupForm
+from .form import BoardWriteForm, MemberForm, signupForm
 from Board import form
 
 # Create your views here.
 def main(request):
+
+    boardList = Board.objects.all()
+
     if request.method == 'POST':
         memberName = request.POST.get('memberName')
         password = request.POST.get('password')
         member = Member.objects.get(memberName=memberName,password=password)
         if member is not None:
             request.session['memberid'] = member.id
-            return render(request, 'main.html', {'memberId' : member.name})
+            return render(request, 'main.html', {'boardList' : boardList})
+
         else:
             return redirect('login')
-    boards = {'boards': Board.objects.all()}
-    return render(request, 'main.html', boards)
+    
+    return render(request, 'main.html',{'boardList' : boardList})
 
-def post(request):
-    if request.method == "POST":
-        author = request.POST['author']
-        title = request.POST['title']
-        content = request.POST['content']
-        board = Board(author=author, title=title, content=content)
-        board.save()
-        return HttpResponseRedirect(reverse('main'))
-    else:
-        return render(request, 'post.html')
-
-def detail(request, id):
-    try:
-        board = Board.objects.get(pk=id)
-    except Board.DoesNotExist:
-        raise Http404("Does not exist!")
-    return render(request, 'detail.html', {'board': board})
-
-@csrf_exempt
-def update(request,boardid):
+def write(request):
     if request.method =='POST':
-        board = Board.objects.get(pk=boardid)
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        if title is not None and board is not None:
-            board.title = title
-            board.content = content
-            board.save()
-            #return redirect('detail', boardid=boardid)
-            return render(request, 'detail.html', {'board': board})
-        else:
-            #return redirect('detail', boardid=boardid)
-            return render(request, 'detail.html', {'board': board})
+        form = BoardWriteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('main')
 
+    member_id = request.session['memberid']
+    member = get_object_or_404(Member, pk=member_id)
+    form = BoardWriteForm(initial={'member':member})
+    return render(request, 'write.html', {'form':form, 'member':member})
 
-def delete(request, boardid):
-    board = Board.objects.get(id=boardid)
-    board.delete()
-    boards = {'boards': Board.objects.all()}
-    return render(request, 'main.html', boards)
+def detail(request, boardid):
+    board = get_object_or_404(Board,pk=boardid)
+    
+    try:
+        session = request.session['memberid']
+        context = {
+            'board': board,
+            'session': session,
+        }
+        return render(request,'detail.html',context)
+
+    except KeyError:
+        return redirect('main')
 
 
 

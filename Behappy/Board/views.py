@@ -2,13 +2,24 @@ from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-
 from .models import *
 
+from .form import MemberForm, signupForm
+from Board import form
+
 # Create your views here.
-def index(request):
+def main(request):
+    if request.method == 'POST':
+        memberName = request.POST.get('memberName')
+        password = request.POST.get('password')
+        member = Member.objects.get(memberName=memberName,password=password)
+        if member is not None:
+            request.session['memberid'] = member.id
+            return render(request, 'main.html', {'memberId' : member.name})
+        else:
+            return redirect('login')
     boards = {'boards': Board.objects.all()}
-    return render(request, 'list.html', boards)
+    return render(request, 'main.html', boards)
 
 def post(request):
     if request.method == "POST":
@@ -17,7 +28,7 @@ def post(request):
         content = request.POST['content']
         board = Board(author=author, title=title, content=content)
         board.save()
-        return HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('main'))
     else:
         return render(request, 'post.html')
 
@@ -49,4 +60,22 @@ def delete(request, boardid):
     board = Board.objects.get(id=boardid)
     board.delete()
     boards = {'boards': Board.objects.all()}
-    return render(request, 'list.html', boards)
+    return render(request, 'main.html', boards)
+
+
+
+#로그인
+def login(request):
+    form = MemberForm()
+    return render(request,'login.html',{'form': form})
+
+
+def signUp(request):
+    if request.method =='POST':
+        form = signupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    form = signupForm()
+    return render(request,'signup.html',{'form': form})
+

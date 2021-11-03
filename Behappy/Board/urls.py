@@ -11,8 +11,10 @@ urlpatterns = [
     path('delete/<int:boardid>', views.delete, name='delete'),
     path('update/<int:boardid>/', views.update, name='update'),
     url('post/(?P<id>[0-9]+)$', views.detail, name='detail'),
+
     #로그인
     path('login/', views.login, name='login'),
     path('signUp/', views.signUp, name='signUp'),
+    path('logout/', views.logout, name='logout'),
    
 ] 

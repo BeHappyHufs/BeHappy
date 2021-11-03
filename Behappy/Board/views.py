@@ -27,6 +27,7 @@ def main(request):
     
     return render(request, 'main.html',{'boardList' : boardList})
 
+
 def write(request):
     if request.method =='POST':
         form = BoardWriteForm(request.POST)
@@ -80,6 +81,11 @@ def login(request):
     form = MemberForm()
     return render(request,'login.html',{'form': form})
 
+def logout(request):
+    if request.session.get('user'):
+        del(request.session['user'])
+    form = MemberForm()
+    return render(request,'login.html',{'form': form})
 
 def signUp(request):
     if request.method =='POST':

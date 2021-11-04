@@ -1,6 +1,8 @@
 from django import urls
 from django.conf.urls import url
 from django.urls import path
+
+from FindLocation.views import showDiffer
 from . import views
 
 urlpatterns = [
@@ -18,6 +20,6 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
 
     # 메인 화면
-    path('',views.showMain),
+    path('',showDiffer),
 
 ] 

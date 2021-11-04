@@ -17,4 +17,7 @@ urlpatterns = [
     path('signUp/', views.signUp, name='signUp'),
     path('logout/', views.logout, name='logout'),
 
+    # 메인 화면
+    path('',views.showMain),
+
 ] 

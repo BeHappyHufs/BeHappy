@@ -97,3 +97,9 @@ def signUp(request):
     form = signupForm()
     return render(request,'signup.html',{'form': form})
 
+
+
+@csrf_exempt
+def showMain(request):
+    if request.method =='GET':
+        return render(request,'realMain.html')

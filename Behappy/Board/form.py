@@ -21,7 +21,7 @@ class signupForm(forms.ModelForm):
         model = Member
         fields =  ['memberName', 'password', 'password_check', 'name']
         widgets = {
-            'memberName' : forms.TextInput(attrs={'class': 'memberName'}),
+            'memberName' : forms.TextInput(attrs={'class': 'memberName',}),
             'password' : forms.PasswordInput(attrs={'class': 'pw1'}),
         }
 
@@ -34,3 +34,4 @@ class BoardWriteForm(forms.ModelForm):
             'content' : forms.TextInput(attrs={'class':'content'}),
             'member' : forms.HiddenInput(),
         }
+         

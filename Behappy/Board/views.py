@@ -1,3 +1,4 @@
+from django import forms
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -70,15 +71,20 @@ def update(request, boardid):
 
 
 def delete(request, boardid):
+    boardList = Board.objects.all()
     board = Board.objects.get(id=boardid)
     board.delete()
     boards = {'boards': Board.objects.all()}
-    return render(request, 'main.html', boards)
+    return render(request, 'main.html', {'boardList' : boardList})
 
 
 #로그인
 def login(request):
-    form = MemberForm()
+    if forms is not None:
+        form = MemberForm()
+    else:
+        return render(request, 'login.html', {'error': 'username or password is incorrect.'})
+   
     return render(request,'login.html',{'form': form})
 
 def logout(request):

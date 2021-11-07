@@ -26,9 +26,10 @@ class signupForm(forms.ModelForm):
 class BoardWriteForm(forms.ModelForm):
     class Meta:
         model = Board
-        fields = ['title', 'content', 'member']
+        fields = ['title', 'user', 'content', 'member']
         widgets ={
             'title' : forms.TextInput(attrs={'class' : 'title'}),
+            'user' : forms.TextInput(attrs={'class':'user'}),
             'content' : forms.TextInput(attrs={'class':'content'}),
             'member' : forms.HiddenInput(),
         }

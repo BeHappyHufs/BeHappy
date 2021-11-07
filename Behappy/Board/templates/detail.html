@@ -38,7 +38,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/Main">게시판</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/main">게시판</a></li>
                         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/login">login</a></li>
                     </ul>
                 </div>
@@ -179,11 +179,13 @@
                 document.querySelector('.btnUpdate').addEventListener('click', e => {
                 let title = document.querySelector('.title');
                 let content = document.querySelector('.content');
+                let user = document.querySelector('.user');
                 let btnSubmit = document.querySelector('.btnSubmit');
                 let btnUpdate = document.querySelector('.btnUpdate');
         
                 title.readOnly = false;
                 content.readOnly = false;
+                user.readOnly = false;
                 btnSubmit.style.display = 'inline-block';
                 btnUpdate.style.display = 'none';
                 });

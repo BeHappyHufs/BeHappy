@@ -13,6 +13,7 @@ class Member(models.Model):
 class Board(models.Model):
     title = models.CharField(max_length=20)
     content = models.CharField(max_length=255)
+    user = models.CharField(max_length=20)
     member = models.ForeignKey(Member , on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)

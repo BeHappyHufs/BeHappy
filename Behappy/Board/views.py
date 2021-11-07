@@ -79,10 +79,12 @@ def update(request, boardid):
     if request.method =='POST':
         board = Board.objects.get(pk=boardid)
         title = request.POST.get('title')
+        user = request.POST.get('user')
         content = request.POST.get('content')
         if title is not None and board is not None:
             board.title = title
             board.content = content
+            board.user = user
             board.save()
             return render(request, 'detail.html', {'board': board})
         else:

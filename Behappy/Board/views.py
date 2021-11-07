@@ -11,6 +11,25 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
+def nonMemberMain(request):
+    boardList = Board.objects.all()
+    return render(request, 'nonMemberMain.html', {'boardList' : boardList})
+
+def nonMemberDetail(request, boardid):
+    board = get_object_or_404(Board,pk=boardid)
+    
+    try:
+        session = request.session['memberid']
+        context = {
+            'board': board,
+            'session': session,
+        }
+        return render(request,'nonMemberDetail.html',context)
+
+    except KeyError:
+        return redirect('nonMemberMain')
+
+
 def main(request):
 
     boardList = Board.objects.all()
@@ -71,10 +90,11 @@ def update(request, boardid):
 
 
 def delete(request, boardid):
+    boardList = Board.objects.all()
     board = Board.objects.get(id=boardid)
     board.delete()
     boards = {'boards': Board.objects.all()}
-    return render(request, 'main.html', boards)
+    return render(request, 'main.html', {'boardList' : boardList})
 
 
 #로그인
@@ -83,10 +103,11 @@ def login(request):
     return render(request,'login.html',{'form': form})
 
 def logout(request):
+    boardList = Board.objects.all()
     if request.session.get('user'):
         del(request.session['user'])
     form = MemberForm()
-    return render(request,'login.html',{'form': form})
+    return render(request,'nonMemberMain.html',{'boardList' : boardList})
 
 def signUp(request):
     if request.method =='POST':

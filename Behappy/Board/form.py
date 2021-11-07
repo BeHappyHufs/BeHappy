@@ -9,9 +9,7 @@ class MemberForm(forms.ModelForm):
     class Meta:
         model = Member
         fields = ['memberName','password']
-        widgets = {
-            'password':forms.PasswordInput
-        }
+        widgets = {'password':forms.PasswordInput}
 
 class signupForm(forms.ModelForm):
     password_check = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={'class':'pw2'}))

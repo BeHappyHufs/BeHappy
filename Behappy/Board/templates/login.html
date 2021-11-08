@@ -7,8 +7,15 @@
         <meta name="author" content="" />
         <title>BeHappy</title>
         <style>
-            .memberName{
-                margin-left: 100px;
+            .caption_field{
+                display: flex;
+
+            }
+            .caption_field_item{
+                width: 100px;
+                background-color: white;
+                border-radius: 10px;
+                
             }
 
         </style>
@@ -50,7 +57,24 @@
                         <br>
                         <form action="{% url 'main' %}" method="post">
                             {% csrf_token %}
-                            {{form.as_p}}
+                            <div style="margin-left: 100px;">
+                                <div class = "caption_field">
+                                    <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">아이디
+                                    </div>
+                                    {{form.memberName}}
+                                </div><br>
+                                <div class = "caption_field">
+                                    <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">비밀번호
+                                    </div>
+                                    {{form.password}}
+                                </div>
+                            </div>
+
+                            <div>
+
+                            </div>
+                            
+                            
                             <br>
                             <input type="submit" class="btn btn-primary" value="Login">
                             <a href="{% url 'signUp' %}"><input type="button" class="btn btn-primary" value="회원등록"></a>

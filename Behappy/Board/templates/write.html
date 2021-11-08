@@ -6,6 +6,20 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>BeHappy</title>
+        <style>
+            .caption_field{
+                display: flex;
+
+            }
+            .caption_field_item{
+                width: 100px;
+                background-color: white;
+                border-radius: 10px;
+                
+            }
+
+
+        </style>
         <link rel="icon" type="image/x-icon" href="../../static/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
@@ -41,7 +55,25 @@
                         <h1 class="mx-auto my-0 text-uppercase">BeHappy</h1>
                         <form action="{% url 'write' %}" method="post">
                             {% csrf_token %}
-                            {{form.as_p}}
+                            <div style="margin-left: 100px;">
+                                <div class = "caption_field">
+                                    <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">제목
+                                    </div>
+                                    {{form.title}}
+                                </div><br>
+                                <div class = "caption_field">
+                                    <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">사용자
+                                    </div>
+                                    {{form.user}}
+                                </div><br>
+                                <div class = "caption_field">
+                                    <div class = "caption_field_item" style = "margin: 0px 30px 100px 0px;">내용
+                                    </div>
+                                    {{form.content}}
+                                </div>
+                            </div>
+                            <br>
+
                             <input type="submit" class="btn btn-primary" style = "width: 150px;" value="등록">
                             <a href="{% url 'main' %}"><input type="button" class="btn btn-primary" style = "width: 150px;" value="돌아가기"></a>
                         </form>

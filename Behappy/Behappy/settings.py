@@ -89,13 +89,13 @@ WSGI_APPLICATION = 'Behappy.wsgi.application'
 
 DATABASES = { 
 	'default': { 
-    	'ENGINE': 'django.db.backends.mysql', 
+	    'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'NoticeBoard', 
         'USER': 'root', 
-        'PASSWORD': 'qwe123!@#', 
+        'PASSWORD': 'guswnsroqkfdyd', 
         'HOST': 'localhost', 
         'PORT': '3306', 
-     } 
+    } 
 }
 
 # Password validation

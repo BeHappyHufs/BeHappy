@@ -55,23 +55,7 @@
                         <h1 class="mx-auto my-0 text-uppercase">BeHappy</h1>
                         <form action="{% url 'write' %}" method="post">
                             {% csrf_token %}
-                            <div style="margin-left: 100px;">
-                                <div class = "caption_field">
-                                    <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">제목
-                                    </div>
-                                    {{form.title}}
-                                </div><br>
-                                <div class = "caption_field">
-                                    <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">사용자
-                                    </div>
-                                    {{form.user}}
-                                </div><br>
-                                <div class = "caption_field">
-                                    <div class = "caption_field_item" style = "margin: 0px 30px 100px 0px;">내용
-                                    </div>
-                                    {{form.content}}
-                                </div>
-                            </div>
+                            {{form.as_p}}
                             <br>
 
                             <input type="submit" class="btn btn-primary" style = "width: 150px;" value="등록">

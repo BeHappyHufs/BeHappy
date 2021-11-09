@@ -9,9 +9,7 @@ class MemberForm(forms.ModelForm):
     class Meta:
         model = Member
         fields = ['memberName','password']
-        widgets = {
-            'password':forms.PasswordInput
-        }
+        widgets = {'password':forms.PasswordInput}
 
 class signupForm(forms.ModelForm):
     password_check = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={'class':'pw2'}))
@@ -28,9 +26,10 @@ class signupForm(forms.ModelForm):
 class BoardWriteForm(forms.ModelForm):
     class Meta:
         model = Board
-        fields = ['title', 'content', 'member']
+        fields = ['title', 'user', 'content', 'member']
         widgets ={
             'title' : forms.TextInput(attrs={'class' : 'title'}),
+            'user' : forms.TextInput(attrs={'class':'user'}),
             'content' : forms.TextInput(attrs={'class':'content'}),
             'member' : forms.HiddenInput(),
         }

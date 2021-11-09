@@ -7,17 +7,14 @@
         <meta name="author" content="" />
         <title>BeHappy</title>
         <style>
-            .caption_field{
-                display: flex;
-
+            .content{
+                width: 500px;
+                height: 300px;
             }
-            .caption_field_item{
-                width: 100px;
-                background-color: white;
-                border-radius: 10px;
-                
+            .title{
+                width: 500px;
+                height: 30px;
             }
-
 
         </style>
         <link rel="icon" type="image/x-icon" href="../../static/assets/favicon.ico" />
@@ -41,7 +38,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/main">게시판</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/nonMemberMain">게시판</a></li>
                         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/login">login</a></li>
                     </ul>
                 </div>
@@ -53,34 +50,68 @@
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
                         <h1 class="mx-auto my-0 text-uppercase">BeHappy</h1>
-                        <form action="{% url 'write' %}" method="post">
-                            {% csrf_token %}
-                            <div style="margin-left: 100px;">
-                                <div class = "caption_field">
-                                    <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">제목
-                                    </div>
-                                    {{form.title}}
-                                </div><br>
-                                <div class = "caption_field">
-                                    <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">사용자
-                                    </div>
-                                    {{form.user}}
-                                </div><br>
-                                <div class = "caption_field">
-                                    <div class = "caption_field_item" style = "margin: 0px 30px 100px 0px;">내용
-                                    </div>
-                                    {{form.content}}
-                                </div>
-                            </div>
+                        <br>
+                        <br>
+                        <br>
+                        <form action="{% url 'update' boardid=board.id %}" method="POST">
+                            
+                            <div class="noti" style="background-color: azure; width:500px; margin: 0 auto; margin-bottom: 10px">제목</div>
+                            <input type="text" class="title" name="title" value="{{board.title}}" readonly/>
                             <br>
-
-                            <input type="submit" class="btn btn-primary" style = "width: 150px;" value="등록">
-                            <a href="{% url 'main' %}"><input type="button" class="btn btn-primary" style = "width: 150px;" value="돌아가기"></a>
+                            <br>
+                            <br>
+                            <div class="noti" style="background-color: azure; width:500px; margin: 0 auto; margin-bottom: 10px;">내용</div>
+                            <textarea class="content" name="content" readonly>{{board.content}}</textarea>
+                            <br>
+                            <br>
+                            <a href="{% url 'nonMemberMain' %}"><input type="button" class="btn btn-primary" value="돌아가기"></a>
+                            
                         </form>
+                    
+						
                     </div>
                 </div>
             </div>
         </header>
+        <!-- About-->
+        <section class="about-section text-center" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-white mb-4">BeHappy</h2>
+                        <p class="text-white-50">BeHappy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Projects-->
+        <section class="projects-section bg-light" id="projects">
+            <div class="container px-4 px-lg-5">
+                <!-- Featured Project Row-->
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="../../static/assets/img/bg-masthead.jpg" alt="..." /></div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="featured-text text-center text-lg-left">
+                            <h4>BeHappy</h4>
+                            <p class="text-black-50 mb-0">BeHappy</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project One Row-->
+                <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+                    <div class="col-lg-6"><img class="img-fluid" src="../../static/assets/img/demo-image-01.jpg" alt="..." /></div>
+                    <div class="col-lg-6">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-left">
+                                    <h4 class="text-white">BeHappy</h4>
+                                    <p class="mb-0 text-white-50">BeHappy</p>
+                                    <hr class="d-none d-lg-block mb-0 ms-0" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
         <section class="contact-section bg-black">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5">
@@ -131,6 +162,7 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        
     </body>
 </html>
         

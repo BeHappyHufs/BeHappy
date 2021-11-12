@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>BeHappy</title>
+        <style>
+            .content{
+                width: 500px;
+                height: 200px;
+            }
+            .title{
+                width: 500px;
+                height: 30px;
+            }
+
+        </style>
+        <link rel="icon" type="image/x-icon" href="../../static/assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../static/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#page-top">BeHappy 서울시 가로 쓰레기통 위치 확인 프로젝트</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/main">게시판</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/login">login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="text-center">
+                        <h1 class="mx-auto my-0 text-uppercase">BeHappy</h1>
+                        <br>
+                        <br>
+                        <br>
+                        <form action="{% url 'update' boardid=board.id %}" method="POST">
+                            
+                            <div class="noti" style="background-color: azure; width:500px; margin: 0 auto; margin-bottom: 10px">제목</div>
+                            <input type="text" class="title" name="title" value="{{board.title}}" readonly/>
+                            <br>
+                            <br>
+
+                            <div class="noti" style="background-color: azure; width:500px; margin: 0 auto; margin-bottom: 10px;">작성자이름</div>
+                            <textarea class="user" name="user" style = "width: 500px;" readonly>{{board.user}}</textarea>
+
+                            <div class="noti" style="background-color: azure; width:500px; margin: 0 auto; margin-bottom: 10px;">내용</div>
+                            <textarea class="content" name="content" readonly>{{board.content}}</textarea>
+
+                            <!-- 라이브리 시티 설치 코드 -->
+                            <div id="lv-container" data-id="city" data-uid="MTAyMC81NDY2NC8zMTEzNQ==">
+                                <script type="text/javascript">
+                            (function(d, s) {
+                                var j, e = d.getElementsByTagName(s)[0];
+
+                                if (typeof LivereTower === 'function') { return; }
+
+                                j = d.createElement(s);
+                                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                                j.async = true;
+
+                                e.parentNode.insertBefore(j, e);
+                            })(document, 'script');
+                                </script>
+                            <noscript> 라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요</noscript>
+                            </div>
+                            <!-- 시티 설치 코드 끝 -->
+
+                    
+                            {% if board.member.id == session %}
+                            <br>
+                            <br>
+                            <input type="button" class="btn btn-primary btnUpdate" value="수정하기">
+
+                            <input  class="btn btn-primary btnSubmit" type="submit" value="수정완료" style="display:none"/>
+                            <br>
+                            {%endif%}
+                            <br>
+                            <a href="{% url 'main' %}"><input type="button" class="btn btn-primary" value="돌아가기"></a>
+                            
+                        </form>
+                        {% if board.member.id == session %}
+                        <!--삭제하기 버튼 기능 -->
+                        <br>
+                        <td><button class="btn btn-danger rounded-pill" onclick="location.href='/delete/{{board.id}}'" style="width: 100px; height:30px; padding: 0px 0px 0px 0px;">삭제</button></td>
+                        {%endif%}
+						
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- About-->
+        <section class="about-section text-center" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-white mb-4">BeHappy</h2>
+                        <p class="text-white-50">BeHappy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Projects-->
+        <section class="projects-section bg-light" id="projects">
+            <div class="container px-4 px-lg-5">
+                <!-- Featured Project Row-->
+                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="../../static/assets/img/bg-masthead.jpg" alt="..." /></div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="featured-text text-center text-lg-left">
+                            <h4>BeHappy</h4>
+                            <p class="text-black-50 mb-0">BeHappy</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project One Row-->
+                <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+                    <div class="col-lg-6"><img class="img-fluid" src="../../static/assets/img/demo-image-01.jpg" alt="..." /></div>
+                    <div class="col-lg-6">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-left">
+                                    <h4 class="text-white">BeHappy</h4>
+                                    <p class="mb-0 text-white-50">BeHappy</p>
+                                    <hr class="d-none d-lg-block mb-0 ms-0" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        <section class="contact-section bg-black">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Address</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50">한국외국어대학교</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Email</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50"><a href="#!">bulljoon98@gmail.com</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Phone</h4>
+                                <hr class="my-4 mx-auto" />
+                                <div class="small text-black-50"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="social d-flex justify-content-center">
+                    <a class="mx-2" href="https://github.com/BeHappyHufs/BeHappy"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; BeHappy팀 김현도 이범희 하현준 한인규 2021</div></footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../static/js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script>
+            let btnUpdate = document.querySelector('.btnUpdate');
+        
+            if(btnUpdate != null){
+                document.querySelector('.btnUpdate').addEventListener('click', e => {
+                let title = document.querySelector('.title');
+                let content = document.querySelector('.content');
+                let user = document.querySelector('.user');
+                let btnSubmit = document.querySelector('.btnSubmit');
+                let btnUpdate = document.querySelector('.btnUpdate');
+        
+                title.readOnly = false;
+                content.readOnly = false;
+                user.readOnly = false;
+               
+                btnSubmit.style.display = 'inline-block';
+                btnUpdate.style.display = 'none';
+                });
+            }
+                
+        </script>
+    </body>
+</html>
+        

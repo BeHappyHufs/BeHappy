@@ -5,11 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        
-        <title>BeHappy</title>
+        <title>Freelancer - Start Bootstrap Theme</title>
+		<style>
+			#mapwrap{position:relative;overflow:hidden;}
+			.category, .category *{margin:0;padding:0;color:#000;}   
+			.category {position:absolute;overflow:hidden;top:10px;left:10px;width:150px;height:50px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:12px;text-align:center;background-color:#fff;}
+			.category .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
+			.category li{list-style:none;float:left;width:50px;height:45px;padding-top:5px;cursor:pointer;} 
+			.category .ico_comm {display:block;margin:0 auto 2px;width:22px;height:26px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png') no-repeat;}  
+			.category .ico_coffee {background-position:-10px -36px;}  
+			.category .ico_store {background-position:-10px -72px;}
+		</style>
         <!-- Favicon-->
-        
-        <link rel="icon" type="image/x-icon" href="../../static/assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -17,48 +25,37 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../../static/css/styles.css" rel="stylesheet" />
-        <style>
-            #mapwrap{position:relative;overflow:hidden;}
-            .category, .category *{margin:0;padding:0;color:#000;}   
-            .category {position:absolute;overflow:hidden;top:10px;left:10px;width:150px;height:50px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:12px;text-align:center;background-color:#fff;}
-            .category .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
-            .category li{list-style:none;float:left;width:50px;height:45px;padding-top:5px;cursor:pointer;} 
-            .category .ico_comm {display:block;margin:0 auto 2px;width:22px;height:26px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png') no-repeat;}  
-            .category .ico_coffee {background-position:-10px -36px;}  
-            .category .ico_store {background-position:-10px -72px;}
-            
-        </style>
     </head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">BeHappy 서울시 가로 쓰레기통 위치 확인 프로젝트</a>
+                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">소개</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/nonMemberMain">게시판</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/login">로그인</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Masthead-->
-        
-        <div style="margin: 0 auto; padding-top:100px; padding-bottom:2%; padding-left: 10%; padding-right: 10%; background-color: #1abc9c;">
-            <!-- Masthead Avatar Image-->
-            <div style="margin: 0 auto; margin-top: 2%; width:200px; ">
-                <img class="masthead-avatar mb-5" src="../../static/assets/img/avataaars.svg" style="width:200px; height:200px;" alt="..." />
-            </div>
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="../../static/assets/img/avataaars.svg" alt="..." />
+                
             
-            <div>
-                <div id="mapwrap">
+            </div>
+            <div class="container d-flex align-items-center flex-column" style="background-color: white !important;">
+                <div id="mapwrap"> 
                     <!-- 지도가 표시될 div -->
-                    <div id="map" style="width:100%; height:350px;"></div>
+                    <div id="map" style="width:1000px;height:350px;"></div>
                     <!-- 지도 위에 표시될 마커 카테고리 -->
                     <div class="category">
                         <ul>
@@ -73,12 +70,30 @@
                         </ul>
                     </div>
                 </div>
-                <input type="button" id="largeRange" onclick="cleanMap();" value = "확장" style="width:100px; height:60px; border-radius: 20px;" />
-                <input type="button" id="largeRange" onclick="cleanMap2();" value = "기본" style="width:100px; height:60px; border-radius: 20px;"/>
-                <input type="button" id="largeRange" onclick="cleanMap3();" value = "축소" style="width:100px; height:60px; border-radius: 20px;"/>
-            </div>   
-        </div>
+                <div style="display: flex;">
+                    <button id="largeRange" onclick="cleanMap();" value = "확장" style="width:100px; height:50px;"/>
+                    <button id="largeRange" onclick="cleanMap2();" value = "기본" style="width:100px; height:50px;"/>
+                    <button id="largeRange" onclick="cleanMap3();" value = "축소" style="width:100px; height:50px;"/>
 
+                </div>
+                
+                <br>
+
+
+            </div>
+
+
+        </header>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
         <!-- Portfolio Section-->
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
@@ -301,7 +316,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cabin.png" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="../../static/assets/img/portfolio/cabin.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                                     <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
@@ -333,7 +348,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="../../static/assets/img/portfolio/cake.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                                     <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
@@ -365,7 +380,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/circus.png" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="../../static/assets/img/portfolio/circus.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                                     <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
@@ -397,7 +412,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/game.png" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="../../static/assets/img/portfolio/game.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                                     <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
@@ -429,7 +444,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/safe.png" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="../../static/assets/img/portfolio/safe.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                                     <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
@@ -461,7 +476,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/submarine.png" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="../../static/assets/img/portfolio/submarine.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                                     <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
@@ -475,359 +490,347 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=12fd9428a38437945217c37127474493"></script>
-        <script>
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-            mapOption = { 
-                center: new kakao.maps.LatLng(37.48070089809124, 126.88282778351619), // 화면에 띄워질 지도의 중심좌표 
-                level: 3 // 지도의 확대 레벨 
-            }; 
-        
-        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-        
-        
-        
-        
-        var mylat;
-        var mylon = [];
-            
-        
-        if (navigator.geolocation) {
-            
-            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-            navigator.geolocation.getCurrentPosition(function(position) {
-                
-                var lat = position.coords.latitude, // 위도
-                    lon = position.coords.longitude; // 경도
-        
-                
-                
-                var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-                    message = '<div style="padding:5px;">현재 나의 위치</div>'; // 인포윈도우에 표시될 내용입니다
-                
-                // 마커와 인포윈도우를 표시합니다
-                displayMarker(locPosition, message);
-                
-        
-                    
-              });
-            
-        } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-            
-            var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
-                message = 'geolocation을 사용할수 없어요..'
-                
-            displayMarker(locPosition, message);
-        }
-        
-        
-        
-        var a = {{ where|safe }}; // views.py에서 넘겨져 오는 데이터들
-        // var coffeePositions = [];
-        // var storePositions = [];
-        
-        function wherelat(a,b){
-
-
-            var get = 0;
-            navigator.geolocation.getCurrentPosition(function(position) {
-                
-                var lat = position.coords.latitude, // 위도
-                    lon = position.coords.longitude; // 경도
-        
-                var locPosition = new kakao.maps.LatLng(lat, lon);
-                var coffeePositions = [];
-                var storePositions = [];
-                
-                if (b === undefined){
-                    b = 2.5;
-                }
-
-                for (var i = 0; i < a[0].length+1; i ++) {
-                    var one = a[0][i];
-                    var two = a[1][i];
-                    var kind = a[2][i];
-                    var latv = 0;
-        
-                    
-                
-            
-                    if (kind == "일반쓰레기"){
-                        if(getDistanceFromLatLonInKm(locPosition.getLat(),locPosition.getLng(),Number(one),Number(two)) < b){
-                            coffeePositions.push(new kakao.maps.LatLng(+one, +two));
-                        }
-                    }else{    
-                        if(getDistanceFromLatLonInKm(locPosition.getLat(),locPosition.getLng(),Number(one),Number(two)) < b){
-                            storePositions.push(new kakao.maps.LatLng(+one, +two));
-                        }
-                    }
-                }
-                var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
-                    coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
-                    storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
-        
-            
-                createCoffeeMarkers(coffeePositions,coffeeMarkers,markerImageSrc); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
-                createStoreMarkers(storePositions,storeMarkers,markerImageSrc); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
-        
-                changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다 
-                    
-                
-        
-                    
-            });
-        }
-        
-        wherelat(a);
-        
-        var Mypostion ;
-        // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-        function displayMarker(locPosition, message) {
-            Mypostion = locPosition;
-            // 마커를 생성합니다
-            var marker = new kakao.maps.Marker({  
-                map: map, 
-                position: locPosition
-            }); 
-            
-            var iwContent = message, // 인포윈도우에 표시할 내용
-                iwRemoveable = true;
-        
-            // 인포윈도우를 생성합니다
-            var infowindow = new kakao.maps.InfoWindow({
-                content : iwContent,
-                removable : iwRemoveable
-            });
-            
-            // 인포윈도우를 마커위에 표시합니다 
-            infowindow.open(map, marker);
-            
-            // 지도 중심좌표를 접속위치로 변경합니다
-            map.setCenter(locPosition);  
-                
-        }
-        
-        
-        function cleanMap(){
-            setCoffeeMarkers(null);
-            setStoreMarkers(null);
-            wherelat(a,50.0);
-        }
-        
-        function cleanMap2(){
-            setCoffeeMarkers(null);
-            setStoreMarkers(null);
-            wherelat(a,2.5);
-        }
-
-        function cleanMap3(){
-            setCoffeeMarkers(null);
-            setStoreMarkers(null);
-            wherelat(a,2.0);
-        }
-
-        // 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
-        function createMarkerImage(src, size, options) {
-            var markerImage = new kakao.maps.MarkerImage(src, size, options);
-            return markerImage;            
-        }
-        
-        
-        
-        
-        // 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
-        function createMarker(position, image,map) {
-            var marker = new kakao.maps.Marker({
-                position: position,
-                image: image,
-                title : "길 찾기",
-        
-            });
-              
-            var yes = 126.9175228;
-            var one = position.getLat();
-            var two = position.getLng();
-            var check = "https://map.kakao.com/link/map/My Location,37.492385,126.9175228";
-            
-            var iwContent = iwContent = '<div style="padding:5px;">쓰레기통 <br><a href="https://map.kakao.com/link/roadview/'+one+','+two+'" style="color:blue" target="_blank">로드뷰</a> <a href="https://map.kakao.com/link/to/쓰레기통,'+one+','+two+'" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-        
-        // 인포윈도우를 생성합니다
-            var infowindow = new kakao.maps.InfoWindow({
-                content : iwContent,
-                removable : iwRemoveable
-            });
-        
-        
-            kakao.maps.event.addListener(marker,'click',makeClickListener(map,marker,infowindow));
-        
-        
-            
-            return marker;  
-        }   
-           
-        // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
-        function createCoffeeMarkers(coffeePositions,coffeeMarkers,markerImageSrc) {
-            
-            for (var i = 0; i < coffeePositions.length; i++) {  
-                
-                var imageSize = new kakao.maps.Size(22, 26),
-                    imageOptions = {  
-                        spriteOrigin: new kakao.maps.Point(10, 0),    
-                        spriteSize: new kakao.maps.Size(36, 98)  
-                    };     
-                
-                // 마커이미지와 마커를 생성합니다
-                var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-                    marker = createMarker(coffeePositions[i], markerImage,map);  
-                
-                // 생성된 마커를 커피숍 마커 배열에 추가합니다
-                coffeeMarkers.push(marker);
-            }     
-        }
-        
-        // 커피숍 마커들의 지도 표시 여부를 설정하는 함수입니다
-        function setCoffeeMarkers(map) {  
-        
-            
-            for (var i = 0; i < coffeeMarkers.length; i++) {  
-                coffeeMarkers[i].setMap(map);
-            }
-            
-        // 마커에 클릭이벤트를 등록합니다
-        
-        
-        // 마커에 클릭이벤트를 등록합니다   
-            
-        }
-        
-        // 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
-        function createStoreMarkers(storePositions, storeMarkers,markerImageSrc) {
-            for (var i = 0; i < storePositions.length; i++) {
-                
-                var imageSize = new kakao.maps.Size(22, 26),
-                    imageOptions = {   
-                        spriteOrigin: new kakao.maps.Point(10, 36),    
-                        spriteSize: new kakao.maps.Size(36, 98)  
-                    };       
-             
-                // 마커이미지와 마커를 생성합니다
-                var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-                    marker = createMarker(storePositions[i], markerImage,map);  
-        
-                
-                // 생성된 마커를 편의점 마커 배열에 추가합니다
-                storeMarkers.push(marker);    
-            }        
-        }
-        
-        // 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
-        function setStoreMarkers(map) {        
-            for (var i = 0; i < storeMarkers.length; i++) {  
-                storeMarkers[i].setMap(map);
-            }        
-        }
-        
-        
-        
-        
-        
-        function makeClickListener(map, marker, infowindow) {
-            return function() {
-                infowindow.open(map, marker);
-            }
-        };
-        
-        // 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
-        function changeMarker(type){
-            
-            var coffeeMenu = document.getElementById('coffeeMenu');
-            var storeMenu = document.getElementById('storeMenu');
-            //var carparkMenu = document.getElementById('carparkMenu');
-            
-            // 커피숍 카테고리가 클릭됐을 때
-            if (type === 'coffee') {
-            
-                // 커피숍 카테고리를 선택된 스타일로 변경하고
-                coffeeMenu.className = 'menu_selected';
-                
-                // 편의점과 주차장 카테고리는 선택되지 않은 스타일로 바꿉니다
-                storeMenu.className = '';
-                
-                // 커피숍 마커들만 지도에 표시하도록 설정합니다
-                setCoffeeMarkers(map);
-                setStoreMarkers(null);
-                
-        
-                
-            } else if (type === 'store') { // 편의점 카테고리가 클릭됐을 때
-            
-                // 편의점 카테고리를 선택된 스타일로 변경하고
-                coffeeMenu.className = '';
-                storeMenu.className = 'menu_selected';
-                //carparkMenu.className = '';
-                
-                // 편의점 마커들만 지도에 표시하도록 설정합니다
-                setCoffeeMarkers(null);
-                setStoreMarkers(map);
-            } 
-        }
-        
-        kakao.maps.event.addListener(marker, 'click', makeClickListener(map, coffeeMarkers, infowindow));
-        
-        function makeClickListener(map, marker, infowindow) {
-            return function() {
-                infowindow.open(map, marker);
-            };
-        }
-        
-        
-        
-        function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
-            function deg2rad(deg) {
-                return deg * (Math.PI/180)
-            }
-        
-            var R = 6371; // 지구의 반지름 km 표시
-            var dLat = deg2rad(lat2-lat1);  // deg2rad below
-            var dLon = deg2rad(lng2-lng1);
-            var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            var d = R * c; // km 로 거리 표시
-            return d;
-        }
-        
-        
-        function computeDistance(lat1,lng1,lat2,lng2) {
-            var startLatRads = degreesToRadians(lat1);
-            var startLongRads = degreesToRadians(lng1);
-            var destLatRads = degreesToRadians(lat2);
-            var destLongRads = degreesToRadians(lng2);
-        
-            var Radius = 6371; //지구의 반경(km)
-            var distance = Math.acos(Math.sin(startLatRads) * Math.sin(destLatRads) + 
-                            Math.cos(startLatRads) * Math.cos(destLatRads) *
-                            Math.cos(startLongRads - destLongRads)) * Radius;
-        
-            return distance;
-        }
-        
-        function degreesToRadians(degrees) {
-            radians = (degrees * Math.PI)/180;
-            return radians;
-        }
-        
-        
-        // <button id="largeRange" onclick="wherelat(a,3.0);" value = "확장"/>
-        </script>
+		
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="../../static/js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=12fd9428a38437945217c37127474493"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.48070089809124, 126.88282778351619), // 화면에 띄워질 지도의 중심좌표 
+        level: 3 // 지도의 확대 레벨 
+    }; 
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+
+
+
+var mylat;
+var mylon = [];
+    
+
+if (navigator.geolocation) {
+    
+    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+    navigator.geolocation.getCurrentPosition(function(position) {
+        
+        var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+
+        
+        
+        var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+            message = '<div style="padding:5px;">현재 나의 위치</div>'; // 인포윈도우에 표시될 내용입니다
+        
+        // 마커와 인포윈도우를 표시합니다
+        displayMarker(locPosition, message);
+        
+
+            
+    });
+    
+} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+    
+    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+        message = 'geolocation을 사용할수 없어요..'
+        
+    displayMarker(locPosition, message);
+}
+
+
+
+var a = {{ where|safe }}; // views.py에서 넘겨져 오는 데이터들
+// var coffeePositions = [];
+// var storePositions = [];
+
+function wherelat(a){
+    var get = 0;
+    navigator.geolocation.getCurrentPosition(function(position) {
+        
+        var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+
+        var locPosition = new kakao.maps.LatLng(lat, lon);
+        var coffeePositions = [];
+        var storePositions = [];
+        
+        for (var i = 0; i < a[0].length+1; i ++) {
+            var one = a[0][i];
+            var two = a[1][i];
+            var kind = a[2][i];
+            var latv = 0;
+
+
+        
+    
+            if (kind == "일반쓰레기"){
+                if(getDistanceFromLatLonInKm(locPosition.getLat(),locPosition.getLng(),Number(one),Number(two)) < 2.5){
+                    coffeePositions.push(new kakao.maps.LatLng(+one, +two));
+                }
+            }else{    
+                if(getDistanceFromLatLonInKm(locPosition.getLat(),locPosition.getLng(),Number(one),Number(two)) < 2.5){
+                    storePositions.push(new kakao.maps.LatLng(+one, +two));
+                }
+            }
+        }
+        var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+            coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
+            storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
+
+    
+        createCoffeeMarkers(coffeePositions,coffeeMarkers,markerImageSrc); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
+        createStoreMarkers(storePositions,storeMarkers,markerImageSrc); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
+
+        changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다 
+            
+        
+
+            
+    });
+}
+
+wherelat(a);
+
+var Mypostion ;
+// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+function displayMarker(locPosition, message) {
+    Mypostion = locPosition;
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({  
+        map: map, 
+        position: locPosition
+    }); 
+    
+    var iwContent = message, // 인포윈도우에 표시할 내용
+        iwRemoveable = true;
+
+    // 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        content : iwContent,
+        removable : iwRemoveable
+    });
+    
+    // 인포윈도우를 마커위에 표시합니다 
+    infowindow.open(map, marker);
+    
+    // 지도 중심좌표를 접속위치로 변경합니다
+    map.setCenter(locPosition);  
+        
+}
+
+
+
+
+// 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
+function createMarkerImage(src, size, options) {
+    var markerImage = new kakao.maps.MarkerImage(src, size, options);
+    return markerImage;            
+}
+
+
+
+
+// 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
+function createMarker(position, image,map) {
+    var marker = new kakao.maps.Marker({
+        position: position,
+        image: image,
+        title : "길 찾기",
+
+    });
+      
+    var yes = 126.9175228;
+    var one = position.getLat();
+    var two = position.getLng();
+    var check = "https://map.kakao.com/link/map/My Location,37.492385,126.9175228";
+    
+    var iwContent = iwContent = '<div style="padding:5px;">쓰레기통 <br><a href="https://map.kakao.com/link/roadview/'+one+','+two+'" style="color:blue" target="_blank">로드뷰</a> <a href="https://map.kakao.com/link/to/쓰레기통,'+one+','+two+'" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+        iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+// 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        content : iwContent,
+        removable : iwRemoveable
+    });
+
+
+    kakao.maps.event.addListener(marker,'click',makeClickListener(map,marker,infowindow));
+
+
+    
+    return marker;  
+}   
+   
+// 커피숍 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
+function createCoffeeMarkers(coffeePositions,coffeeMarkers,markerImageSrc) {
+    
+    for (var i = 0; i < coffeePositions.length; i++) {  
+        
+        var imageSize = new kakao.maps.Size(22, 26),
+            imageOptions = {  
+                spriteOrigin: new kakao.maps.Point(10, 0),    
+                spriteSize: new kakao.maps.Size(36, 98)  
+            };     
+        
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(coffeePositions[i], markerImage,map);  
+        
+        // 생성된 마커를 커피숍 마커 배열에 추가합니다
+        coffeeMarkers.push(marker);
+    }     
+}
+
+// 커피숍 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setCoffeeMarkers(map) {  
+
+    
+    for (var i = 0; i < coffeeMarkers.length; i++) {  
+        coffeeMarkers[i].setMap(map);
+    }
+    
+// 마커에 클릭이벤트를 등록합니다
+
+
+// 마커에 클릭이벤트를 등록합니다   
+    
+}
+
+// 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
+function createStoreMarkers(storePositions, storeMarkers,markerImageSrc) {
+    for (var i = 0; i < storePositions.length; i++) {
+        
+        var imageSize = new kakao.maps.Size(22, 26),
+            imageOptions = {   
+                spriteOrigin: new kakao.maps.Point(10, 36),    
+                spriteSize: new kakao.maps.Size(36, 98)  
+            };       
+     
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+            marker = createMarker(storePositions[i], markerImage,map);  
+
+        
+        // 생성된 마커를 편의점 마커 배열에 추가합니다
+        storeMarkers.push(marker);    
+    }        
+}
+
+// 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setStoreMarkers(map) {        
+    for (var i = 0; i < storeMarkers.length; i++) {  
+        storeMarkers[i].setMap(map);
+    }        
+}
+
+
+
+
+
+function makeClickListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    }
+};
+
+// 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
+function changeMarker(type){
+    
+    var coffeeMenu = document.getElementById('coffeeMenu');
+    var storeMenu = document.getElementById('storeMenu');
+    //var carparkMenu = document.getElementById('carparkMenu');
+    
+    // 커피숍 카테고리가 클릭됐을 때
+    if (type === 'coffee') {
+    
+        // 커피숍 카테고리를 선택된 스타일로 변경하고
+        coffeeMenu.className = 'menu_selected';
+        
+        // 편의점과 주차장 카테고리는 선택되지 않은 스타일로 바꿉니다
+        storeMenu.className = '';
+        
+        // 커피숍 마커들만 지도에 표시하도록 설정합니다
+        setCoffeeMarkers(map);
+        setStoreMarkers(null);
+        
+
+        
+    } else if (type === 'store') { // 편의점 카테고리가 클릭됐을 때
+    
+        // 편의점 카테고리를 선택된 스타일로 변경하고
+        coffeeMenu.className = '';
+        storeMenu.className = 'menu_selected';
+        //carparkMenu.className = '';
+        
+        // 편의점 마커들만 지도에 표시하도록 설정합니다
+        setCoffeeMarkers(null);
+        setStoreMarkers(map);
+    } 
+}
+
+kakao.maps.event.addListener(marker, 'click', makeClickListener(map, coffeeMarkers, infowindow));
+
+function makeClickListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
+    function deg2rad(deg) {
+        return deg * (Math.PI/180)
+    }
+
+    var R = 6371; // 지구의 반지름 km 표시
+    var dLat = deg2rad(lat2-lat1);  // deg2rad below
+    var dLon = deg2rad(lng2-lng1);
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    var d = R * c; // km 로 거리 표시
+    return d;
+}
+
+
+function computeDistance(lat1,lng1,lat2,lng2) {
+    var startLatRads = degreesToRadians(lat1);
+    var startLongRads = degreesToRadians(lng1);
+    var destLatRads = degreesToRadians(lat2);
+    var destLongRads = degreesToRadians(lng2);
+
+    var Radius = 6371; //지구의 반경(km)
+    var distance = Math.acos(Math.sin(startLatRads) * Math.sin(destLatRads) + 
+                    Math.cos(startLatRads) * Math.cos(destLatRads) *
+                    Math.cos(startLongRads - destLongRads)) * Radius;
+
+    return distance;
+}
+
+function degreesToRadians(degrees) {
+    radians = (degrees * Math.PI)/180;
+    return radians;
+}
+
+
+
+</script>
     </body>
 </html>

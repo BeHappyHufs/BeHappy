@@ -20,12 +20,12 @@
         <style>
             #mapwrap{position:relative;overflow:hidden;}
             .category, .category *{margin:0;padding:0;color:#000;}   
-            .category {position:absolute;overflow:hidden;top:10px;left:10px;width:150px;height:50px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:12px;text-align:center;background-color:#fff;}
+            .category {position:absolute;overflow:hidden;top:10px;left:10px;width:100px;height:50px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:12px;text-align:center;background-color:#fff;}
             .category .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
             .category li{list-style:none;float:left;width:50px;height:45px;padding-top:5px;cursor:pointer;} 
             .category .ico_comm {display:block;margin:0 auto 2px;width:22px;height:26px;background:url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markers_sprites2.png') no-repeat;}  
-            .category .ico_coffee {background-position:-10px -36px;}  
-            .category .ico_store {background-position:-10px -72px;}
+            .category .ico_coffee {background-position:-44px 0px;}  
+            .category .ico_store {background-position:-44px -47px;}
             
         </style>
     </head>
@@ -562,7 +562,7 @@
                         }
                     }
                 }
-                var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+                var markerImageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markers_sprites2.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
                     coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
                     storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
         
@@ -671,10 +671,10 @@
             
             for (var i = 0; i < coffeePositions.length; i++) {  
                 
-                var imageSize = new kakao.maps.Size(22, 26),
+                var imageSize = new kakao.maps.Size(25, 25),
                     imageOptions = {  
-                        spriteOrigin: new kakao.maps.Point(10, 0),    
-                        spriteSize: new kakao.maps.Size(36, 98)  
+                        spriteOrigin: new kakao.maps.Point(30, 0),    
+                        spriteSize: new kakao.maps.Size(90, 98)  
                     };     
                 
                 // 마커이미지와 마커를 생성합니다
@@ -705,10 +705,10 @@
         function createStoreMarkers(storePositions, storeMarkers,markerImageSrc) {
             for (var i = 0; i < storePositions.length; i++) {
                 
-                var imageSize = new kakao.maps.Size(22, 26),
+                var imageSize = new kakao.maps.Size(25, 25),
                     imageOptions = {   
-                        spriteOrigin: new kakao.maps.Point(10, 36),    
-                        spriteSize: new kakao.maps.Size(36, 98)  
+                        spriteOrigin: new kakao.maps.Point(30, 30),    
+                        spriteSize: new kakao.maps.Size(90, 98)  
                     };       
              
                 // 마커이미지와 마커를 생성합니다

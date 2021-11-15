@@ -92,7 +92,7 @@ DATABASES = {
 	    'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'NoticeBoard', 
         'USER': 'root', 
-        'PASSWORD': 'khd10810', 
+        'PASSWORD': '비밀번호 맞춰주세용~', 
         'HOST': 'localhost', 
         'PORT': '3306', 
     } 

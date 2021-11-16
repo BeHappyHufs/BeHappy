@@ -24,6 +24,7 @@ def showBin():
     where =[]
     kind = []
     detail = []
+    roadAddr = []
 
  
     url = "https://api.odcloud.kr/api/15087773/v1/uddi:6bcb9ebf-d368-4ac8-9382-a9e82437f74d"
@@ -51,11 +52,15 @@ def showBin():
     for tag in soup.find_all('col', attrs={'name':'설치장소유형'}):
         detail.append(tag.next)
 
+    for tag in soup.find_all('col', attrs={'name':'소재지도로명'}):
+        roadAddr.append(tag.next)
+
     result =[]
     result.append(data)
     result.append(where)
     result.append(kind)
     result.append(detail)
-    # print(result) # result 에 대한 내용을 출력
+    result.append(roadAddr)
+    #print(result) # result 에 대한 내용을 출력
     return result
 

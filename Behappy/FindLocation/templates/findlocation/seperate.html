@@ -540,6 +540,8 @@
                 var storePositions = [];
                 var detailCoffeePosition = [];
                 var detailStorePosition = [];
+                var roadCoffee = [];
+                var roadStore = [];
                 
                 if (b === undefined){
                     b = 2.5;
@@ -551,6 +553,7 @@
                     var kind = a[2][i];
                     var latv = 0;
                     var detail = a[3][i];
+                    var road = a[4][i];
                     
         
                     
@@ -560,11 +563,13 @@
                         if(getDistanceFromLatLonInKm(locPosition.getLat(),locPosition.getLng(),Number(one),Number(two)) < b){
                             coffeePositions.push(new kakao.maps.LatLng(+one, +two));
                             detailCoffeePosition.push(detail);
+                            roadCoffee.push(road);
                         }
                     }else{    
                         if(getDistanceFromLatLonInKm(locPosition.getLat(),locPosition.getLng(),Number(one),Number(two)) < b){
                             storePositions.push(new kakao.maps.LatLng(+one, +two));
                             detailStorePosition.push(detail);
+                            roadStore.push(road);
                         }
                     }
                 }
@@ -573,8 +578,8 @@
                     storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
         
             
-                createCoffeeMarkers(coffeePositions,coffeeMarkers,markerImageSrc,detailCoffeePosition); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
-                createStoreMarkers(storePositions,storeMarkers,markerImageSrc,detailStorePosition); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
+                createCoffeeMarkers(coffeePositions,coffeeMarkers,markerImageSrc,detailCoffeePosition,roadCoffee); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
+                createStoreMarkers(storePositions,storeMarkers,markerImageSrc,detailStorePosition,roadStore); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
         
                 changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다 
                     
@@ -642,11 +647,11 @@
         
         
         // 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
-        function createMarker(position, image,map,detail) {
+        function createMarker(position, image,map,detail,road) {
             var marker = new kakao.maps.Marker({
                 position: position,
                 image: image,
-                title : detail,
+                title : road,
         
             });
               
@@ -673,7 +678,7 @@
         }   
            
         // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
-        function createCoffeeMarkers(coffeePositions,coffeeMarkers,markerImageSrc,detail) {
+        function createCoffeeMarkers(coffeePositions,coffeeMarkers,markerImageSrc,detail,road) {
             
             for (var i = 0; i < coffeePositions.length; i++) {  
                 
@@ -685,7 +690,7 @@
                 
                 // 마커이미지와 마커를 생성합니다
                 var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-                    marker = createMarker(coffeePositions[i], markerImage,map,detail[i]);  
+                    marker = createMarker(coffeePositions[i], markerImage,map,detail[i],road[i]);  
                 
                 // 생성된 마커를 커피숍 마커 배열에 추가합니다
                 coffeeMarkers.push(marker);
@@ -708,7 +713,7 @@
         }
         
         // 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
-        function createStoreMarkers(storePositions, storeMarkers,markerImageSrc,detail) {
+        function createStoreMarkers(storePositions, storeMarkers,markerImageSrc,detail,road) {
             for (var i = 0; i < storePositions.length; i++) {
                 
                 var imageSize = new kakao.maps.Size(25, 25),
@@ -719,7 +724,7 @@
              
                 // 마커이미지와 마커를 생성합니다
                 var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
-                    marker = createMarker(storePositions[i], markerImage,map,detail[i]);  
+                    marker = createMarker(storePositions[i], markerImage,map,detail[i],road[i]);  
         
                 
                 // 생성된 마커를 편의점 마커 배열에 추가합니다

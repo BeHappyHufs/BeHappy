@@ -8,28 +8,26 @@ from.models import Board, Member
 class MemberForm(forms.ModelForm):
     class Meta:
         model = Member
-        fields = ['memberName','password']
+        fields = ['ID','password']
         widgets = {'password':forms.PasswordInput}
 
 class signupForm(forms.ModelForm):
     password_check = forms.CharField(max_length=60, widget=forms.PasswordInput(attrs={'class':'pw2'}))
 
-    #field_order = ['memberName','password','password_check','name']
     class Meta:
         model = Member
-        fields =  ['memberName', 'password', 'password_check', 'name']
+        fields =  ['ID', 'password', 'password_check',]
         widgets = {
-            'memberName' : forms.TextInput(attrs={'class': 'memberName'}),
+            'ID' : forms.TextInput(attrs={'class': 'ID'}),
             'password' : forms.PasswordInput(attrs={'class': 'pw1'}),
         }
 
 class BoardWriteForm(forms.ModelForm):
     class Meta:
         model = Board
-        fields = ['title', 'user', 'content', 'member']
+        fields = ['title', 'content', 'member']
         widgets ={
             'title' : forms.TextInput(attrs={'class' : 'title'}),
-            'user' : forms.TextInput(attrs={'class':'user'}),
             'content' : forms.TextInput(attrs={'class':'content'}),
             'member' : forms.HiddenInput(),
         }

@@ -61,7 +61,7 @@
                         <div class = "caption_field">
                             <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px; width: 100px;">아이디
                             </div>
-                            {{form.memberName}}
+                            {{form.ID}}
                         </div><br>
                         <div class = "caption_field">
                             <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px; width: 100px;">비밀번호
@@ -69,18 +69,21 @@
                             {{form.password}}
                         </div>
                     </div>
-
-                    <div>
-
-                    </div>
                     
                     <br>
                     <br>
+                    <form>
+                        <div class="btn-group b">
 
-                    <input type="submit" class="btn btn-primary" value="Login" style="margin-right: 30px;">
-                    <a href="{% url 'signUp' %}"><input type="button" class="btn btn-primary" value="회원등록" ></a>
-
-                    
+                            <input type="submit" class="btn btn-primary" value="로그인" >
+                     
+                            <a href="{% url 'signUp' %}"><input type="button" class="btn btn-primary" value="회원등록" ></a>
+                            
+                            
+                          
+                        </div>
+                    </form>
+                
                 </form>
             </div>
 
@@ -503,3 +506,8 @@
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
+<script>
+    const back = () =>{
+        window.history.back();
+    }
+</script>

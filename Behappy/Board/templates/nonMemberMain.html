@@ -45,14 +45,14 @@
             <table border = "1" style="margin: 0 auto;">
             <tr>
                 <td style="background-color: #dadada;">제목</td>
-                <td style="background-color: #dadada;">작성자</td>
+                <td style="background-color: #dadada;">사용자ID</td>
                 <td style="background-color: #dadada;">등록시간</td>
                 <td style="background-color: #dadada;">수정시간</td>
             </tr>
             {% for item in boardList %}
             <tr>
                 <td style="background-color: white; width: 150px;"><a href="{% url 'nonMemberDetail' boardid=item.id %}">{{item.title}}</a></td>
-                <td style="background-color: white; width: 150px;">{{item.user}}</td>
+                <td style="background-color: white; width: 150px;">{{item.member_id}}</td>
                 <td style="background-color: white; width: 300px;">{{item.created_date}}</td>
                 <td style="background-color: white; width: 300px;">{{item.modified_date}}</td>
             </tr>

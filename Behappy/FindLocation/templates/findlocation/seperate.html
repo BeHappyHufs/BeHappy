@@ -655,7 +655,7 @@
             var two = position.getLng();
             var check = "https://map.kakao.com/link/map/My Location,37.492385,126.9175228";
             
-            var iwContent = iwContent = '<div style="padding:5px;">쓰레기통 <br><a href="https://map.kakao.com/link/roadview/'+one+','+two+'" style="color:blue" target="_blank">로드뷰</a> <a href="https://map.kakao.com/link/to/쓰레기통,'+one+','+two+'" style="color:blue" target="_blank">길찾기</a><a href="http://123.214.61.36/remote_con.php?PD" style="color:blue" target="_blank">확인</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            var iwContent = iwContent = ' <a href="https://map.kakao.com/link/roadview/'+one+','+two+'" style="color:blue" target="_blank">로드뷰</a> <a href="https://map.kakao.com/link/to/쓰레기통,'+one+','+two+'" style="color:blue" target="_blank">길찾기</a> <a href="http://123.214.61.36/remote_con.php?PD" style="color:blue" target="_blank">확인</a></div><div style="padding:2px;"> '+detail+' <div style="padding:15px;">', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                 iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
         
         // 인포윈도우를 생성합니다

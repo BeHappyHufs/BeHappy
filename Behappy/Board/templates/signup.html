@@ -33,14 +33,14 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">BeHappy 서울시 가로 쓰레기통 위치 확인 프로젝트</a>
+                <a class="navbar-brand" href="http://127.0.0.1:8000">BeHappy 서울시 가로 쓰레기통 위치 확인 프로젝트</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">소개</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/nonMemberMain">게시판</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/login">로그인</a></li>
                     </ul>
@@ -63,7 +63,7 @@
                         <div class = "caption_field">
                             <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">아이디
                             </div>
-                            {{form.memberName}}
+                            {{form.ID}}
                         </div><br>
                         <div class = "caption_field">
                             <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">비밀번호
@@ -75,14 +75,10 @@
                             </div>
                             {{form.password_check}}
                         </div><br>
-                        <div class = "caption_field">
-                            <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">닉네임
-                            </div>
-                            {{form.name}}
-                        </div>
+                    
                     </div>
                     <br>
-                    <input class="btn btn-primary" type="submit" value="signup">
+                    <input class="btn btn-primary" type="submit" value="가입하기">
                     <input class="btn btn-primary" type="button" value="돌아가기" onclick="back()">
                 </form>
                 
@@ -506,5 +502,10 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script>
+            const back = () =>{
+                window.history.back();
+            }
+        </script>
     </body>
 </html>

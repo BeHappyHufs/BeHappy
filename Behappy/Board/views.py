@@ -35,11 +35,11 @@ def main(request):
     boardList = Board.objects.all()
 
     if request.method == 'POST':
-        memberName = request.POST.get('memberName')
+        ID = request.POST.get('ID')
         password = request.POST.get('password')
-        member = Member.objects.get(memberName=memberName,password=password)
+        member = Member.objects.get(ID=ID,password=password)
         if member is not None:
-            request.session['memberid'] = member.id
+            request.session['memberid'] = member.ID
             return render(request, 'main.html', {'boardList' : boardList})
 
         else:

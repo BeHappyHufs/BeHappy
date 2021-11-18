@@ -27,7 +27,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">소개</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/main">게시판</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/login">로그인</a></li>
                     </ul>
@@ -41,19 +41,18 @@
                 <img class="masthead-avatar mb-5" src="../../static/assets/img/avataaars.svg" style="width:200px; height:200px;" alt="..." />
             </div>
 
-
             
             <table border = "1" style =" border-radius: 30px; margin: 0 auto;" >
             <tr>
                 <td style="background-color: #dadada;">제목</td>
-                <td style="background-color: #dadada;">작성자</td>
+                <td style="background-color: #dadada;">사용자ID</td>
                 <td style="background-color: #dadada;">등록시간</td>
                 <td style="background-color: #dadada;">수정시간</td>
             </tr>
             {% for item in boardList %}
             <tr>
                 <td style="background-color: white; width: 150px;"><a href="{% url 'detail' boardid=item.id %}">{{item.title}}</a></td>
-                <td style="background-color: white; width: 150px;">{{item.user}}</td>
+                <td style="background-color: white; width: 150px;">{{item.member_id}}</td>
                 <td style="background-color: white; width: 300px;">{{item.created_date}}</td>
                 <td style="background-color: white; width: 300px;">{{item.modified_date}}</td>
             </tr>
@@ -66,17 +65,7 @@
                 <a class="btn btn-primary" href="{% url 'write' %}">글쓰기</a>
             </div>
 
-
-
-
-
-
-
         </div>
-
-
-
-
 
         <!-- Portfolio Section-->
         <section class="page-section portfolio" id="portfolio">

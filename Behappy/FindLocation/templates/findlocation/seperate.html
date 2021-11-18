@@ -493,58 +493,58 @@
         var mylat;
         var mylon = [];
 
-//  **********************  수정 중
-    //     var circle;
+
+        var circle;
         
 
 
 
-    // function start(map,circleRadius){
-    //     if (navigator.geolocation) {
-    //         if (circle) { // 최초 실행시에는 circle이 없을테니 예외처리를 해줍니다.
-    //             circle.setMap(null);
-    //         }
+    function start(map,circleRadius){
+        if (navigator.geolocation) {
+            if (circle) { // 최초 실행시에는 circle이 없을테니 예외처리를 해줍니다.
+                circle.setMap(null);
+            }
 
-    //         // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-    //         navigator.geolocation.getCurrentPosition(function(position) {
+            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+            navigator.geolocation.getCurrentPosition(function(position) {
                 
-    //             var lat = position.coords.latitude, // 위도
-    //                 lon = position.coords.longitude; // 경도
+                var lat = position.coords.latitude, // 위도
+                    lon = position.coords.longitude; // 경도
         
-    //             circle = new kakao.maps.Circle({
-    //                 center : new kakao.maps.LatLng(lat, lon),  // 원의 중심좌표 입니다 
-    //                 radius: circleRadius, // 미터 단위의 원의 반지름입니다 
-    //                 strokeWeight: 2, // 선의 두께입니다 
-    //                 strokeColor: '#75B8FA', // 선의 색깔입니다
-    //                 strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-    //                 strokeStyle: 'dashed', // 선의 스타일 입니다
-    //                 fillColor: '#CFE7FF', // 채우기 색깔입니다
-    //                 fillOpacity: 0.5  // 채우기 불투명도 입니다   
-    //             }); 
+                circle = new kakao.maps.Circle({
+                    center : new kakao.maps.LatLng(lat, lon),  // 원의 중심좌표 입니다 
+                    radius: circleRadius, // 미터 단위의 원의 반지름입니다 
+                    strokeWeight: 2, // 선의 두께입니다 
+                    strokeColor: '#75B8FA', // 선의 색깔입니다
+                    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                    strokeStyle: 'dashed', // 선의 스타일 입니다
+                    fillColor: '#CFE7FF', // 채우기 색깔입니다
+                    fillOpacity: 0.5  // 채우기 불투명도 입니다   
+                }); 
                 
                 
-    //             var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-    //                 message = '<div style="padding:5px;">현재 나의 위치</div>'; // 인포윈도우에 표시될 내용입니다
+                var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+                    message = '<div style="padding:5px;">현재 나의 위치</div>'; // 인포윈도우에 표시될 내용입니다
                 
-    //             // 마커와 인포윈도우를 표시합니다
-    //             displayMarker(locPosition, message);
-    //             circle.setMap(map);
+                // 마커와 인포윈도우를 표시합니다
+                displayMarker(locPosition, message);
+                circle.setMap(map);
                 
         
                     
-    //           });
+              });
             
-    //     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+        } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
             
-    //         var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
-    //             message = 'geolocation을 사용할수 없어요..'
+            var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+                message = 'geolocation을 사용할수 없어요..'
                 
-    //         displayMarker(locPosition, message);
-    //     }
-    // }
-    // start(map,2500);
+            displayMarker(locPosition, message);
+        }
+    }
+    start(map,2500);
 
-    // ************************* 수정중
+
 
 
         if (navigator.geolocation) {
@@ -680,25 +680,22 @@
         function cleanMap(){
             setCoffeeMarkers(null);
             setStoreMarkers(null);
-            wherelat(a,3.0);
-//################################## 수정 중            
-            //start(map,3000);
+            wherelat(a,3.0);       
+            start(map,3000);
         }
         
         function cleanMap2(){
             setCoffeeMarkers(null);
             setStoreMarkers(null);
             wherelat(a,2.5);
-  //###################################  수정중          
-            //start(map,2500);
+            start(map,2500);
         }
 
         function cleanMap3(){
             setCoffeeMarkers(null);
             setStoreMarkers(null);
             wherelat(a,2.0);
-// ##################################### 수정 중            
-            //start(map,2000);
+            start(map,2000);
         }
 
         // 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다

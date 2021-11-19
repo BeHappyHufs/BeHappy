@@ -33,59 +33,76 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
+                <img class="img_header" src="../../static/assets/img/avataaars.svg" style="width:80px; height:80px;" alt="..." />
+                
                 <!-- <img class="masthead-avatar mb-5" src="../../static/assets/img/avataaars.svg" style="width:200px; height:200px;" alt="..." /> -->
-                <a class="navbar-brand" href="#page-top">BeHappy 서울시 가로 쓰레기통 위치 확인 프로젝트</a>
+                <a class="navbar-brand" href="/">쓰로케이션</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">소개</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/nonMemberMain">게시판</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/login">로그인</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" style="font-size: 20px;" href="#portfolio">소개</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" style="font-size: 20px;" href="http://127.0.0.1:8000/nonMemberMain">게시판</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" style="font-size: 20px;" href="http://127.0.0.1:8000/login">로그인</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Masthead-->
         
-        <div style="margin: 0 auto; padding-top:100px; padding-bottom:2%; padding-left: 10%; padding-right: 10%; background-color: #1abc9c;">
+        <div style="margin: 0 auto; padding-top:150px; padding-bottom:2%; padding-left: 10%; padding-right: 10%; background-color: #1abc9c;">
             <!-- Masthead Avatar Image-->
-            <div style="margin: 0 auto; margin-top: 2%; width:200px; ">
-                <img class="masthead-avatar mb-5" src="../../static/assets/img/avataaars.svg" style="width:200px; height:200px;" alt="..." />
-            </div>
-            <div>
-                <div id="mapwrap">
-                    <!-- 지도가 표시될 div -->
-                    <!-- 이거는 왼쪽 정렬되있음: <div id="map" style="width:80%; height:350px; text-align: center; margin: 0%;"></div>  -->
-                    <div id="map" style="width:100%; height:350px;"></div> 
-                    <!-- 지도 사이즈 조정 - 이미지 정렬 center -->
-                    <!-- 지도 위에 표시될 마커 카테고리 -->
-                    <div class="category">
-                        <ul>
-                            <li id="coffeeMenu" onclick="changeMarker('coffee')">
-                                <span class="ico_comm ico_coffee"></span>
-                                일반
-                            </li>
-                            <li id="storeMenu" onclick="changeMarker('store')">
-                                <span class="ico_comm ico_store"></span>
-                                재활용
-                            </li>
-                        </ul>
-                    </div>
+            <div class ="container">
+
+                <h2 style="margin: 0 auto; width: 65px;">지도</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
                 </div>
-                <input type="button" id="largeRange" onclick="cleanMap();" value = "확장" style="width:100px; height:60px; border-radius: 20px;" />
-                <input type="button" id="largeRange" onclick="cleanMap2();" value = "기본" style="width:100px; height:60px; border-radius: 20px;"/>
-                <input type="button" id="largeRange" onclick="cleanMap3();" value = "축소" style="width:100px; height:60px; border-radius: 20px;"/>
-            </div>   
+
+
+                <div>
+                    <div id="mapwrap">
+                        <!-- 지도가 표시될 div -->
+                        <!-- 이거는 왼쪽 정렬되있음: <div id="map" style="width:80%; height:350px; text-align: center; margin: 0%;"></div>  -->
+                        
+                            <div id="map" style="width:100%; height:500px;"></div> 
+                            <!-- 지도 사이즈 조정 - 이미지 정렬 center -->
+                            <!-- 지도 위에 표시될 마커 카테고리 -->
+                            <div class="category">
+                                <ul>
+                                    <li id="coffeeMenu" style="width: 49px;" onclick="changeMarker('coffee')">
+                                        <span class="ico_comm ico_coffee"></span>
+                                        일반
+                                    </li>
+                                    <li id="storeMenu" style="width: 49px;" onclick="changeMarker('store')">
+                                        <span class="ico_comm ico_store"></span>
+                                        재활용
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                            <div style="width: 500px; height: 70px; margin: 0 auto; display: flex; margin-top: 10px; justify-content: space-around;">
+                                <input class="btn btn-primary" type="button" id="largeRange" onclick="cleanMap();" value = "확장" style="width:150px; height:60px; border-radius: 20px;" />
+                                <input class="btn btn-primary" type="button" id="largeRange" onclick="cleanMap2();" value = "기본" style="width:150px; height:60px; border-radius: 20px;"/>
+                                <input class="btn btn-primary" type="button" id="largeRange" onclick="cleanMap3();" value = "축소" style="width:150px; height:60px; border-radius: 20px;"/>
+                            </div>
+                            
+                    </div>
+                    
+                </div>
+            </div>       
         </div>
 
         <!-- Portfolio Section-->
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+                <h2 style="margin: 0 auto; width: 65px;">소개</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -121,33 +138,6 @@
                             <img class="img-fluid" src="../../static/assets/img/portfolio/circus.png" alt="..." />
                         </div>
                     </div>
-                    <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../../static/assets/img/portfolio/game.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 5-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../../static/assets/img/portfolio/safe.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 6-->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../../static/assets/img/portfolio/submarine.png" alt="..." />
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -164,125 +154,15 @@
                 </div>
                 <!-- About Section Content-->
                 <div class="row">
-                    <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-                    <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
-                </div>
-                <!-- About Section Button-->
-                <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
-                        <i class="fas fa-download me-2"></i>
-                        Free Download!
-                    </a>
-                </div>
-            </div>
-        </section>
-        <!-- Contact Section-->
-        <section class="page-section" id="contact">
-            <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Contact Section Form-->
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-xl-7">
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Name input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                <label for="name">Full name</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <!-- Email address input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">Email address</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <!-- Phone number input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">Phone number</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                            </div>
-                            <!-- Message input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                <label for="message">Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                            </div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
-                        </form>
-                    </div>
+                    <div class="col-lg-4 ms-auto"><p class="lead">서울시에서 쓰레기가 무분별하게 버려지고 있습니다. 그 원인은 사람들이 쓰레기통의 위치가 정확히 어디있는지 몰라서 길거리에 버리는 경우가 큽니다. 그래서 사용자에게 쓰레기통 위치정보를 제공해서 길거리에 무분별하게 버려지는 쓰레기의 양을 줄이려고 합니다. </p></div>
+                    <div class="col-lg-4 me-auto"><p class="lead">BeHappy팀과 함께 대한민국의 쓰레기 문제를 해결해봅시다!</p></div>
                 </div>
             </div>
         </section>
         <!-- Footer-->
-        <footer class="footer text-center">
-            <div class="container">
-                <div class="row">
-                    <!-- Footer Location-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Location</h4>
-                        <p class="lead mb-0">
-                            2215 John Daniel Drive
-                            <br />
-                            Clark, MO 65243
-                        </p>
-                    </div>
-                    <!-- Footer Social Icons-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Around the Web</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-                    </div>
-                    <!-- Footer About Text-->
-                    <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">About Freelancer</h4>
-                        <p class="lead mb-0">
-                            Freelance is a free to use, MIT licensed Bootstrap theme created by
-                            <a href="http://startbootstrap.com">Start Bootstrap</a>
-                            .
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; Your Website 2021</small></div>
+            <div class="container"><small>Copyright &copy; 팀 BeHappy 김현도 이범희 하현준 한인규</small></div>
         </div>
         <!-- Portfolio Modals-->
         <!-- Portfolio Modal 1-->
@@ -532,7 +412,7 @@
                 
         
                     
-              });
+            });
             
         } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
             
@@ -565,7 +445,7 @@
                 
         
                     
-              });
+            });
             
         } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
             
@@ -680,8 +560,8 @@
         function cleanMap(){
             setCoffeeMarkers(null);
             setStoreMarkers(null);
-            wherelat(a,3.0);       
-            start(map,3000);
+            wherelat(a,50.0);       
+            start(map,50000);
         }
         
         function cleanMap2(){
@@ -715,7 +595,7 @@
                 title : road,
         
             });
-              
+        
             var yes = 126.9175228;
             var one = position.getLat();
             var two = position.getLng();
@@ -737,7 +617,7 @@
             
             return marker;  
         }   
-           
+        
         // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
         function createCoffeeMarkers(coffeePositions,coffeeMarkers,markerImageSrc,detail,road) {
             
@@ -782,7 +662,7 @@
                         spriteOrigin: new kakao.maps.Point(30, 30),    
                         spriteSize: new kakao.maps.Size(90, 98)  
                     };       
-             
+            
                 // 마커이미지와 마커를 생성합니다
                 var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
                     marker = createMarker(storePositions[i], markerImage,map,detail[i],road[i]);  

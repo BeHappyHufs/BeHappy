@@ -9,7 +9,7 @@
         <style>
             .caption_field{
                 display: flex;
-                width: 300px;
+                text-align: center;
 
             }
             .caption_field_item{
@@ -34,16 +34,20 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="http://127.0.0.1:8000">BeHappy 서울시 가로 쓰레기통 위치 확인 프로젝트</a>
+                <img class="img_header" src="../../static/assets/img/avataaars.svg" style="width:80px; height:80px;" alt="..." />
+                
+                <!-- <img class="masthead-avatar mb-5" src="../../static/assets/img/avataaars.svg" style="width:200px; height:200px;" alt="..." /> -->
+                <a class="navbar-brand" href="http://127.0.0.1:8000">쓰로케이션</a>
+
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">소개</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/nonMemberMain">게시판</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="http://127.0.0.1:8000/login">로그인</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" style="font-size: 20px;" href="#portfolio">소개</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" style="font-size: 20px;" href="http://127.0.0.1:8000/nonMemberMain">게시판</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" style="font-size: 20px;" href="http://127.0.0.1:8000/login">로그인</a></li>
                     </ul>
                 </div>
             </div>
@@ -51,20 +55,28 @@
         
         <div style="margin: 0 auto; padding-top: 100px; padding-bottom:2%; padding-left: 10%; padding-right: 10%; background-color: #1abc9c;">
             <!-- Masthead Avatar Image-->
-            <div style="margin: 0 auto; margin-top: 2%; width:200px; ">
+            <div style="margin: 0 auto; margin-top: 80px; width:200px; ">
                 <img class="masthead-avatar mb-5" src="../../static/assets/img/avataaars.svg" style="width:200px; height:200px;" alt="..." />
             </div>
-            <div style="margin: 0 auto; width: 200px;">
+
+            <h2 style="margin: 0 auto; width: 96px;">로그인</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+            <div style="margin: 0 auto; width: 300px;">
                 <form action="{% url 'main' %}" method="post">
                     {% csrf_token %}
                     <div>
                         <div class = "caption_field">
-                            <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px; width: 100px;">아이디
+                            <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">아이디
                             </div>
                             {{form.ID}}
                         </div><br>
                         <div class = "caption_field">
-                            <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px; width: 100px;">비밀번호
+                            <div class = "caption_field_item" style = "margin: 0px 30px 0px 0px;">비밀번호
                             </div>
                             {{form.password}}
                         </div>
@@ -73,14 +85,14 @@
                     <br>
                     <br>
                     <form>
-                        <div class="btn-group b">
+                        <div style="width: 350px;">
 
-                            <input type="submit" class="btn btn-primary" value="로그인" >
-                     
-                            <a href="{% url 'signUp' %}"><input type="button" class="btn btn-primary" value="회원등록" ></a>
+                            <input type="submit" class="btn btn-primary" style="width: 100px; margin-right: 10px;" value="로그인" >
+                    
+                            <a href="{% url 'signUp' %}"><input type="button" style="margin-right: 10px;" class="btn btn-primary" value="회원등록" ></a>
                             
                             <input class="btn btn-primary" type="button" value="돌아가기" onclick="back()">
-                          
+                        
                         </div>
                     </form>
                 
@@ -103,7 +115,7 @@
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">BeHappy</h2>
+                <h2 style="margin: 0 auto; width: 65px;">소개</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -137,33 +149,6 @@
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
                             <img class="img-fluid" src="../../static/assets/img/portfolio/circus.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../../static/assets/img/portfolio/game.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 5-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../../static/assets/img/portfolio/safe.png" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 6-->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="../../static/assets/img/portfolio/submarine.png" alt="..." />
                         </div>
                     </div>
                 </div>

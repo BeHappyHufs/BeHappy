@@ -57,7 +57,7 @@
             </tr>
             {% for item in boardList %}
             <tr>
-                <td style="background-color: white; width: 150px;"><a href="{% url 'detail' boardid=item.id %}">{{item.title}}</a></td>
+                <td style="background-color: white; width: 300px;"><a href="{% url 'detail' boardid=item.id %}">{{item.title}}</a></td>
                 <td style="background-color: white; width: 150px;">{{item.member_id}}</td>
                 <td style="background-color: white; width: 300px;">{{item.created_date}}</td>
                 <td style="background-color: white; width: 300px;">{{item.modified_date}}</td>

@@ -1,47 +1,15 @@
-## 🤘서비스 주제
-코로나로 인해 학과 선후배 간의 교류가 많이 줄어들게 됬다. 따라서 ICETIME을 통해 학교 생활, 진로 및 취업, 연애등 학교 생활을 하면서 궁금한 점에 대해 자유롭게 얘기할 수 있는 웹서비스 개발
+#### What service do you provide?
+- Due to COVID-19, interactions between seniors and juniors in the department have been reduced a lot. Therefore, through ICETIME, we developed a web service that allows you to freely talk about your questions while going through school life, such as school life, career and employment, and dating.
+- There are two key features currently provided by the service. First, it is not a heavy topic such as employment or career that can be found on the department homepage, but it has created a dating counseling bulletin board that can attract students' attention, increasing the participation rate of students. Second, in order to prevent problems related to anonymity that may occur in systems such as "Everytime service" that is currently in operation, strong sanctions are possible on the admin page by using a nickname when writing posts and comments.
 
-</br>
+#### What technology stack was used?
 
-## 📜 서비스 내용
-### 정보통신공학과 학생들이 자유롭게 정보를 공유할 수 있는 웹 서비스 구현
+| technology stack |
+|---|
+| `Django` |
+| `Python` |
+| `Mysql` |
 
-</br>
-
-### <현재 위 서비스에서 제공하는 핵심 기능 2가지입니다>
-
-1. 학과 홈페이지에서 찾을 수 있는 취업, 진로와 같은 무거운 주제뿐만 아니라 학생들의 관심을 끌 수 있는 연애상담 게시판을 만들어 학생들의 참여율을 높였다.
-2. 현재 운영되는 에브리타임과 같은 시스템에서 발생 할 수 있는 익명성 관련 문제를 방지하기 위해 글과 댓글 작성 시 닉네임을 사용하여 관리자 페이지에서 강력한 제재 가능하다.
-
-</br>
-
-## 🛠 기술 스택
-
-- Django, Python
-- Mysql
-
-</br>
-
-## 🖥 개발 내용
-
-### 1. RDB 설계
-
-- 사용자와 카테고리 별 게시글 정보에 대한 RDB설계
-
-### 2. 각 카테고리별 게시판 기능 구현
-
-- 회원 관리 및 게시글 작성 관련 API 설계 및 기능 구현
-
-</br>
-
-### <서버 비용으로 인해 현재 운영은 중지되었습니다.>
-
-
-</br>
-
-## 👀 서비스 화면
-|               웹서비스 메인 페이지            |               로그인 전 재학생 페이지            |
-|   :---------------------------------:    |     :-------------------------------:      |
-| <img src="https://user-images.githubusercontent.com/64251951/215012075-c1b226e9-0653-4c1c-b595-b59f539f73c0.png" width="500" height="350"/>|<img src="https://user-images.githubusercontent.com/64251951/215012086-a55f69b1-207f-4bd7-a597-3f2ff2a63f18.png" width="500" height="350"/>
-|             로그인 후 재학생 페이지            |               게시글 작성 페이지              |
-| <img src="https://user-images.githubusercontent.com/64251951/215012094-94159d81-f837-47c8-9646-e489b0d14439.png" width="500" height="350"/>|<img src="https://user-images.githubusercontent.com/64251951/215012102-3ad0e549-1bca-4a32-ab76-fb08ed90d8d3.png" width="500" height="350"/>
+#### what did you develop?
+- We designed a domain that can manage post information by user and category, We designed and implemented an API that can use posts according to each member.
+-Currently, the operation is suspended due to server costs.
